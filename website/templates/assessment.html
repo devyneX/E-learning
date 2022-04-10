@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+
+{% block title %} {% endblock%}
+
+{% block content %}
+
+{% for question in questions %}
+
+<p> {{ question.text }} </p>
+<input type="radio"> {{ question.option3 }}
+<input type="radio"> {{ question.option3 }}
+<input type="radio"> {{ question.option3 }}
+<input type="radio"> {{ question.option4 }}
+
+{% endfor %}
+
+{% endblock%}
+
