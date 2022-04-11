@@ -1,9 +1,15 @@
 from flask import Flask
 from flask_login import LoginManager
+from flask_mysqldb import MySQL
+
+
+mysql = MySQL()
 
 
 def create_app():
     app = Flask(__name__)
+
+    connect_database(app, mysql)
 
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
@@ -15,3 +21,12 @@ def create_app():
         return None
 
     return app
+
+
+def connect_database(app, db):
+    app.config['MYSQL_HOST'] = 'localhost'
+    app.config['MYSQL_USER'] = 'root'
+    app.config['MYSQL_PASSWORD'] = ''
+    app.config['MYSQL_DB'] = 'e_learning'
+
+    db.init(app)
