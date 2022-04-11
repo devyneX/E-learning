@@ -38,7 +38,9 @@ def signup():
 
         # validate if the username and email are unique
         # validate something was inputted in fn and ln
-        if password1 == password2 and len(password1) >= 8:
+        if len(firstname) < 2 or len(lastname) < 2:
+            pass
+        elif password1 == password2 and len(password1) >= 8:
             pass
         else:
             # add user to the data base

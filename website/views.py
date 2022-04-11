@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from flask_login import current_user
+from flask_login import current_user, login_required
 
 
 views = Blueprint('views', __name__)
@@ -13,6 +13,11 @@ def home():
     return render_template('home.html', user=current_user, courses=courses)
 
 
+@views.route('/<search_term>')
+def browse():
+    pass
+
+
 def student():
     pass
 
@@ -22,20 +27,51 @@ def teacher():
 
 
 @views.route('/<course_id>')
-def course():
-    # if course_id not in database:
-    #     no page
-    # else:
-    #     return course_student.html
+@login_required
+def course(course_id):
+    course = None
+    if course is None:
+        # no page
+        pass
+    else:
+        contents = []
+        return render_template('course_student.html', user=current_user, study_materials=contents)
+
+
+@views.route('/add_course')
+@login_required
+def add_course():
     pass
 
 
 @views.route('/<course_id>/<content_id>')
+@login_required
 def content(course_id, content_id):
-    # if course_id not in database:
-    #     no page
-    # elif content_id not in database:
-    #     no page
-    # else:
-    #     return course_student.html
+    course = None
+    content = None
+    if course is None:
+        # no page
+        pass
+    elif content is None:
+        # no page
+        pass
+    else:
+        return render_template('course_student.html', user=current_user, content=content)
+
+
+@views.route('/add_content')
+@login_required
+def add_content():
+    pass
+
+
+@views.route('/<course_id>/<assessment_id>')
+@login_required
+def assessment(course_id, assessment_id):
+    pass
+
+
+@views.route('/add_assessment')
+@login_required
+def add_assessment():
     pass
