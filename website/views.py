@@ -11,7 +11,7 @@ def home():
     # query to get courses
     courses = []
 
-    return render_template('home.html', user=current_user, courses=courses)
+    return render_template('home.html', user=current_user)
 
 
 @views.route('/<search_term>')
@@ -19,10 +19,14 @@ def browse():
     pass
 
 
+@views.route('/student_profile')
+@login_required
 def student():
     pass
 
 
+@views.route('/teacher_profile')
+@login_required
 def teacher():
     pass
 

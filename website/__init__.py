@@ -11,6 +11,12 @@ def create_app():
 
     connect_database(app, mysql)
 
+    from .views import views
+    from .auth import auth
+
+    app.register_blueprint(views, url_prefix='/')
+    app.register_blueprint(auth, url_prefix='/')
+
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
@@ -30,4 +36,4 @@ def connect_database(app, db):
     app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
     app.config['MYSQL_DB'] = 'e_learning'
 
-    db.init(app)
+    db.init_app(app)
