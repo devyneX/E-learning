@@ -4,4 +4,22 @@
 
 {% block content %}
 
+<form>
+    <input type="text" name="title" placeholder="Assessment Title">
+    {% for question in questions %}
+    {{ question.text }}
+    {{ question.option1 }}
+    {{ question.option2 }}
+    {{ question.option3 }}
+    {{ question.option4 }}
+    {% endfor %}
+    <input type="text" name="text" placeholder="Question">
+    <input type="text" name="option1" placeholder="option1">
+    <input type="text" name="option2" placeholder="option2">
+    <input type="text" name="option3" placeholder="option3">
+    <input type="text" name="option4" placeholder="option4">
+    <button>add</button>
+    <button>Finish</button>
+</form>
+
 {% endblock%}
