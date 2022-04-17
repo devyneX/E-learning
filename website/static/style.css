@@ -529,8 +529,8 @@ nav .content .links{
   padding:1rem 0;
 }
 
-/* Login starts here */
-.login{  
+/* Login and signup starts here */
+.login, .signup{  
   margin: 0;
   height: 100vh;
   width: 100vw;
@@ -544,7 +544,7 @@ nav .content .links{
   background-color: #ecf0f3;
 }
 
-.login_form{
+.login_form, .signup_form{
   width: 430px;
   height: 700px;
   padding: 60px 35px 35px 35px;
@@ -565,18 +565,20 @@ nav .content .links{
   0px 0px 0px 5px #ecf0f3, 8px 8px 15px #a7aaaf,
   -8px -8px 15px #fff;
 }
-.login_title{
+.login_title, .signup_title{
   text-align: center;
   font-size: 28px;
-  padding-top: 24px;
   letter-spacing: 0.5px;
 }
 .login_content{
   width: 100%;
   padding: 75px 5px 5px 5px;
 }
+.signup_content{
+  width: 100%;
+}
 
-.login_content input{
+.login_content input, .signup_content input{
   border: none;
   outline: none;
   background: none;
@@ -584,18 +586,18 @@ nav .content .links{
   color: #555;
   padding: 20px 10px 20px 5px;
 }
-.username, .password{
+.username, .password, .confirm_password, .first_name, .last_name, .email{
   margin-bottom: 30px;
   border-radius: 25px;
   box-shadow: inset 8px 8px 8px #cbced1, 
   inset -8px -8px 8px #fff;
 }
 
-.login_content svg{
+.login_content svg, .signup_content svg{
   height: 22px;
   margin: 0 10px -3px 25px;
 }
-.login_btn{
+.login_btn, .signup_btn{
   outline: none;
   border: none;
   cursor: pointer;
@@ -612,10 +614,10 @@ nav .content .links{
   -3px -3px 8px #fff;
 }
 
-.login_btn:hover{
+.login_btn:hover, .signup_btn:hover{
   background-color: #50e5b9;
 }
-.login_btn:active{
+.login_btn:active, .signup_btn:active{
   background-color: #88ef9e;
 }
 
