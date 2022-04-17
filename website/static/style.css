@@ -11,7 +11,6 @@
   background-color: rgba(2, 48, 71, 1);
   position: fixed;
   width: 100%;
-  border-radius: 100rem;
 }
 
 .wrapper nav{
@@ -247,6 +246,10 @@ nav .content .links{
   .wrapper .search-box input{
     padding-right: 30px;
   }
+}
+/* Body starts here */
+.body_content { 
+  padding-top: 100px; 
 }
 /* Footer Style starts */
 .container{
