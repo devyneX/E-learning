@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+:root{
+  --pink:#FF046F;
+  --violet:#C63BFA;
+}
+.body_content { 
+  padding-top: 100px; 
+}
 *{
   margin: 0;
   padding: 0;
@@ -11,6 +19,7 @@
   background-color: rgba(2, 48, 71, 1);
   position: fixed;
   width: 100%;
+  z-index: 10000;
 }
 
 .wrapper nav{
