@@ -1,6 +1,7 @@
 from flask import Blueprint, redirect, render_template, request, url_for
 from flask_login import current_user, login_required, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
+from .models import User
 from . import mysql
 
 
@@ -10,23 +11,28 @@ auth = Blueprint('auth', __name__)
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        acc_type = request.form.get('type')
+        # acc_type = request.form.get('type')
         username = request.form.get('username')
         password = request.form.get('password')
 
-    # password_check
-    user = None
-    if check_password_hash(user.enc_pass, password):
-        login_user(user, remember=True)
-        return redirect(url_for('views.home'))
-    else:
-        # incorrect password
-        pass
+        # password_check
+        cur = mysql.connection.cursor()
+        cur.execute(
+            """SELECT * FROM authorization WHERE username=%s""", username)
+        result = cur.fetchall()[0]
+        user = User(result['account_id'], result['account_type'],
+                    result['email'], result['username'], result['encrypted_password'])
+        if check_password_hash(user.enc_passord, password):
+            login_user(user, remember=True)
+            return redirect(url_for('views.home'))
+        else:
+            # incorrect password
+            pass
 
     return render_template('login.html', user=current_user)
 
 
-@auth.route('/signup')
+@auth.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
         acc_type = request.form.get('type')

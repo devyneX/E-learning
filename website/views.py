@@ -14,9 +14,9 @@ def home():
     return render_template('home.html', user=current_user)
 
 
-@views.route('/<search_term>')
-def browse():
-    pass
+# @views.route('/<search_term>')
+# def browse():
+#     pass
 
 
 @views.route('/student_profile')
@@ -35,12 +35,13 @@ def teacher():
 @login_required
 def course(course_id):
     course = None
-    if course is None:
+    if course is not None:
         # no page
         pass
     else:
         contents = []
-        return render_template('course_student.html', user=current_user, study_materials=contents)
+        assessments = []
+        return render_template('course_student.html', user=current_user, study_materials=contents, assessments=assessments)
 
 
 @views.route('/add_course')

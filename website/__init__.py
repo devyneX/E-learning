@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_login import LoginManager
 from flask_mysqldb import MySQL
+from .models import User
 
 
 mysql = MySQL()
@@ -23,8 +24,12 @@ def create_app():
 
     @login_manager.user_loader
     def load_user(id):
-        # return user
-        return None
+        cur = mysql.connection.cursor()
+        cur.execute("""SELECT * FROM authorization WHERE account_id=id""")
+        result = cur.fetchall()[0]
+        user = User(result['account_id'], result['account_type'],
+                    result['email'], result['username'], result['encrypted_password'])
+        return user
 
     return app
 
