@@ -1,6 +1,6 @@
 {% extends 'base.html'%}
 
-{% block title %}{% endblock%}
+{% block title %}Course{% endblock%}
 
 {% block content %}
 
@@ -17,10 +17,10 @@
         <h1>Add Content</h1>
 
         <label for="title"><b>Content Title</b></label>
-        <input type="text" placeholder="Content Title" name="title" required>
+        <input type="text" placeholder="Content Title" name="title" required><br>
 
         <label for="link"><b>Link</b></label>
-        <input type="url" placeholder="Link" name="link" required>
+        <input type="url" placeholder="Link" name="link" required><br>
 
         <button type="submit" class="">Add</button>
         <button type="button" class="" onclick="closeForm('addContent')">Close</button>

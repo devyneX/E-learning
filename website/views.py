@@ -31,9 +31,9 @@ def teacher():
     pass
 
 
-@views.route('/<course_id>')
+@views.route('/course')
 @login_required
-def course(course_id):
+def course():
     course = None
     if course is not None:
         # no page
@@ -41,7 +41,8 @@ def course(course_id):
     else:
         contents = []
         assessments = []
-        return render_template('course_student.html', user=current_user, study_materials=contents, assessments=assessments)
+        return render_template('course.html', user=current_user, study_materials=contents, assessments=assessments)
+    return render_template('course.html', user=current_user, study_materials=contents, assessments=assessments)
 
 
 @views.route('/add_course')

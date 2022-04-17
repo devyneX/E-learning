@@ -5,9 +5,12 @@ class User(UserMixin):
     def __init__(self, account_id, account_type, email, username, enc_password):
         self.account_id = account_id
         self.account_type = account_type
-        self.email = email
         self.username = username
+        self.email = email
         self.enc_password = enc_password
+
+    def get_id(self):
+        return str(self.account_id)
 
 
 class Student:
