@@ -35,9 +35,21 @@
                         </ul>
                     </li>
                     <li><a href="#">Contact Us</a></li>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="#" class="desktop-link">Profile</a>
+                        <input type="checkbox" id="show-features">
+                        <label for="show-features">Profile</label>
+                        <ul>
+                            <li><a href="/profile">Profile</a></li>
+                            <li><a href="/account">Account</a></li>
+                            <li><a href="/logout">Logout</a></li>
+                        </ul>
+                    </li>
+                    {% else %}
                     <li><a href="/login">Login</a></li>
                     <li><a href="/signup">Signup</a></li>
-                    <li><a href="/profile">Profile</a></li>
+                    {% endif %}
                 </ul>
             </div>
             <label for="show-search" class="search-icon"><i class="fas fa-search"></i></label>
@@ -45,6 +57,25 @@
                 <input type="text" placeholder="Type Something to Search..." required>
                 <button type="submit" class="go-icon"><i class="fas fa-long-arrow-alt-right"></i></button>
             </form>
+            <!-- <div class="content">
+                <ul class="links">
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="#" class="desktop-link">Profile</a>
+                        <input type="checkbox" id="show-features">
+                        <label for="show-features">Profile</label>
+                        <ul>
+                            <li><a href="/profile">Profile</a></li>
+                            <li><a href="/account">Account</a></li>
+                            <li><a href="/logout">Logout</a></li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/signup">Signup</a></li>
+                    {% endif %}
+                </ul>
+            </div> -->
         </nav>
     </div>
 

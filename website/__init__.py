@@ -48,13 +48,3 @@ def connect_database(app, db):
     app.config['MYSQL_DB'] = 'e_learning'
 
     db.init_app(app)
-
-
-# CREATE TABLE authorization (
-#     account_id int NOT NULL AUTO_INCREMENT,
-#     account_type varchar(10),
-#     username varchar(255) NOT NULL,
-#     email varchar(255) NOT NULL,
-#     encrypted_password varchar(255) NOT NULL,
-#     PRIMARY KEY (account_id)
-# );

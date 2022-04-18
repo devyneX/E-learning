@@ -5,8 +5,13 @@
 {% block content %}
 <div class="signup">
     <div class="signup_form">
-        <div class="signup_title">E-Learning</div>
+        <div class="signup_title">Sign Up</div>
         <form method="post" class="signup_content">
+            <div>
+                Sign Up as
+                <input type="radio" name="type" value="teacher" required>Teacher
+                <input type="radio" name="type" value="student">Student<br>
+            </div>
             <div class="first_name">
                 <svg class="svg-icon" viewBox="0 0 20 20">
                     <path

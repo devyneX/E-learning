@@ -3,6 +3,7 @@ from flask_login import current_user, login_required, login_user, logout_user
 from flask_mysqldb import MySQLdb
 from werkzeug.security import generate_password_hash, check_password_hash
 from .models import User
+from datetime import date
 from . import mysql
 
 
@@ -12,36 +13,42 @@ auth = Blueprint('auth', __name__)
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        # acc_type = request.form.get('type')
+        # fetching info from the form
+        acc_type = request.form.get('type')
         username = request.form.get('username')
         password = request.form.get('password')
 
-        # password_check
+        # fetching info from db
         cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cur.execute(
-            """SELECT * FROM authorization WHERE username = %s""", (username, ))
+            """SELECT * FROM authorization WHERE username = %s AND account_type = %s""", (username, acc_type))
         result = cur.fetchone()
         print(result)
         cur.close()
+        # if the user exists
         if result is not None:
             user = User(result['account_id'], result['account_type'],
                         result['username'], result['email'], result['encrypted_password'])
+            # checking password
             if check_password_hash(user.enc_password, password):
                 login_user(user, remember=True)
                 return redirect(url_for('views.home'))
             else:
                 # incorrect password
+                # flash message
                 pass
         else:
-            pass
+            # if the user does not exist, redirect to sign up page
+            return redirect(url_for('auth.signup'))
 
     return render_template('login.html', user=current_user)
 
 
 @auth.route('/signup', methods=['GET', 'POST'])
 def signup():
+    # fetching info from the form
     if request.method == 'POST':
-        # acc_type = request.form.get('type')
+        acc_type = request.form.get('type')
         firstname = request.form.get('firstname')
         lastname = request.form.get('lastname')
         username = request.form.get('username')
@@ -49,31 +56,46 @@ def signup():
         password1 = request.form.get('set_pass')
         password2 = request.form.get('confirm_pass')
 
+        # fetching info from db
         cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cur.execute(
-            """SELECT username, email FROM authorization WHERE username = %s OR email = %s""", (username, email))
+            """SELECT username, email FROM authorization WHERE (username = %s OR email = %s) and account_type = %s""", (username, email, acc_type))
         result = cur.fetchall()
         print(result)
         cur.close()
 
+        # checking if the username and email are unique
         if len(result) > 0:
+            # flash
             pass
-        # elif len(firstname) < 2 or len(lastname) < 2:
-        #     pass
+        # checking if valid names were inputted
+        elif len(firstname) < 2 or len(lastname) < 2:
+            # flash
+            pass
+        # checking if the two passwords match
         elif password1 == password2 and len(password1) < 2:
+            # flash
             pass
         else:
             # add user to the data base
             enc_password = generate_password_hash(password1)
             cur = mysql.connection.cursor()
             cur.execute("""INSERT INTO authorization (account_type, username, email, encrypted_password) VALUES(%s, %s, %s, %s)""",
-                        ('student', username, email, enc_password))
+                        (acc_type, username, email, enc_password))
             mysql.connection.commit()
-            # print(username)
+
             cur.execute(
                 """SELECT account_id FROM authorization WHERE username = %s""", (username, ))
-            account_id = cur.fetchone()
-            print(account_id)
+            account_id = cur.fetchone()[0]
+
+            if acc_type == 'student':
+                cur.execute("""INSERT INTO student (firstname, lastname, join_date, account_id) VALUES (%s, %s, %s, %s)""",
+                            (firstname, lastname, date.today(), account_id))
+            else:
+                cur.execute("""INSERT INTO teacher (firstname, lastname, join_date, account_id) VALUES (%s, %s, %s, %s)""",
+                            (firstname, lastname, date.today(), account_id))
+
+            mysql.connection.commit()
             user = User(
                 account_id, 'student', email, username, enc_password)
             login_user(user, remember=True)
