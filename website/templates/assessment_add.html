@@ -7,7 +7,7 @@
 <form>
     <input type="text" name="title" placeholder="Assessment Title">
     {% for question in questions %}
-    {{ question.text }}
+    {{ question.text }} 
     {{ question.option1 }}
     {{ question.option2 }}
     {{ question.option3 }}
@@ -18,8 +18,8 @@
     <input type="text" name="option2" placeholder="option2">
     <input type="text" name="option3" placeholder="option3">
     <input type="text" name="option4" placeholder="option4">
-    <button>add</button>
-    <button>Finish</button>
+    <button type="submit">add</button>
+    <button><a href="#">Finish</a></button>
 </form>
 
 {% endblock%}
