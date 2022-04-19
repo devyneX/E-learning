@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+
+{% block title %}{{ assessment.assessment_title }}{% endblock%}
+
+{% block content %}
+
+{% for question in questions %}
+{{ question.text }}<br>
+{{ question.option1 }}<br>
+{{ question.option2 }}<br>
+{{ question.option3 }}<br>
+{{ question.option4 }}<br>
+{% endfor %}
+
+<form method="POST">
+    <input type="text" name="text" placeholder="Question"><br>
+    <input type="text" name="option1" placeholder="option1"><br>
+    <input type="text" name="option2" placeholder="option2"><br>
+    <input type="text" name="option3" placeholder="option3"><br>
+    <input type="text" name="option4" placeholder="option4"><br>
+    <input type="text" name="correct" placeholder="Correct Answer"><br>
+    <button type="submit">add</button>
+</form>
+<button><a href="/course/{{ assessment.course_id }}">Finish</a></button>
+
+{% endblock%}

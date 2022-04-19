@@ -85,7 +85,7 @@ def signup():
             mysql.connection.commit()
 
             cur.execute(
-                """SELECT account_id FROM authorization WHERE username = %s""", (username, ))
+                """SELECT account_id FROM authorization WHERE username = %s AND account_type = %s""", (username, acc_type))
             account_id = cur.fetchone()[0]
 
             if acc_type == 'student':

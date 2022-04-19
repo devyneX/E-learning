@@ -34,13 +34,12 @@ class Teacher:
 
 
 class Course:
-    def __init__(self, course_id, course_title, category, description, teacher, rating):
+    def __init__(self, course_id, course_title, category, description, teacher):
         self.course_id = course_id
         self.course_title = course_title
         self.category = category
         self.description = description
         self.teacher = teacher
-        self.rating = rating
 
 
 class Content:
@@ -53,14 +52,16 @@ class Content:
 
 
 class Assessment:
-    def __init__(self, assessment_id, assessment_title, teacher_id):
+    def __init__(self, assessment_id, assessment_title, course_id, teacher_id):
         self.assessment_id = assessment_id
         self.assessment_title = assessment_title
+        self.course_id = course_id
         self.teacher_id = teacher_id
 
 
 class Question:
-    def __init__(self, text, option1, option2, option3, option4, correct):
+    def __init__(self, assessment_id, text, option1, option2, option3, option4, correct):
+        self.assessment_id = assessment_id
         self.text = text
         self.option1 = option1
         self.option2 = option2

@@ -1,0 +1,98 @@
+CREATE TABLE authorization (
+    account_id int NOT NULL AUTO_INCREMENT,
+    account_type varchar(10),
+    username varchar(255) NOT NULL,
+    email varchar(255) NOT NULL,
+    encrypted_password varchar(255) NOT NULL,
+    PRIMARY KEY (account_id)
+);
+CREATE TABLE student (
+    student_id int NOT NULL AUTO_INCREMENT,
+    firstname varchar(255),
+    lastname varchar(255),
+    join_date date,
+    account_id int NOT NULL,
+    PRIMARY KEY (student_id),
+    FOREIGN KEY (account_id) REFERENCES authorization(account_id)
+);
+CREATE TABLE teacher (
+    teacher_id int NOT NULL AUTO_INCREMENT,
+    firstname varchar(255),
+    lastname varchar(255),
+    join_date date,
+    account_id int NOT NULL,
+    PRIMARY KEY (teacher_id),
+    FOREIGN KEY (account_id) REFERENCES authorization(account_id)
+);
+CREATE TABLE course (
+    course_id int NOT NULL AUTO_INCREMENT,
+    course_title varchar(255),
+    category varchar(100),
+    description varchar(511),
+    teacher_id int NOT NULL,
+    created_on date,
+    PRIMARY KEY (course_id),
+    FOREIGN KEY (teacher_id) REFERENCES teacher(teacher_id)
+);
+CREATE TABLE content (
+    content_id int NOT NULL AUTO_INCREMENT,
+    content_title varchar(255),
+    link varchar(255),
+    course_id int NOT NULL,
+    teacher_id int NOT NULL,
+    PRIMARY KEY (content_id),
+    FOREIGN KEY (course_id) REFERENCES course(course_id),
+    FOREIGN KEY (teacher_id) REFERENCES teacher(teacher_id)
+);
+CREATE TABLE assessment (
+    assessment_id int NOT NULL AUTO_INCREMENT,
+    assessment_title varchar(255),
+    course_id int NOT NULL,
+    teacher_id int NOT NULL,
+    PRIMARY KEY (assessment_id),
+    FOREIGN KEY (course_id) REFERENCES course(course_id),
+    FOREIGN KEY (teacher_id) REFERENCES teacher(teacher_id)
+);
+CREATE TABLE enrollment (
+    student_id int NOT NULL,
+    course_id int NOT NULL,
+    enrollment_date date,
+    PRIMARY KEY (student_id, course_id),
+    FOREIGN KEY (student_id) REFERENCES student(student_id),
+    FOREIGN KEY (course_id) REFERENCES course(course_id)
+);
+CREATE TABLE feedback (
+    course_id int NOT NULL,
+    student_id int NOT NULL,
+    star int NOT NULL,
+    review varchar(511),
+    PRIMARY KEY (course_id, student_id),
+    FOREIGN KEY (course_id) REFERENCES course(course_id),
+    FOREIGN KEY (student_id) REFERENCES student(student_id)
+);
+CREATE TABLE attended_assessment (
+    student_id int NOT NULL,
+    assessment_id int NOT NULL,
+    result varchar(10),
+    PRIMARY KEY (student_id, assessment_id),
+    FOREIGN KEY (student_id) REFERENCES student(student_id),
+    FOREIGN KEY (assessment_id) REFERENCES assessment(assessment_id)
+);
+CREATE TABLE questions(
+    assessment_id int NOT NULL,
+    text varchar(255) NOT NULL,
+    option1 varchar(255) NOT NULL,
+    option2 varchar(255) NOT NULL,
+    option3 varchar(255) NOT NULL,
+    option4 varchar(255) NOT NULL,
+    correct int NOT NULL,
+    FOREIGN KEY(assessment_id) REFERENCES assessment(assessment_id)
+);
+CREATE TABLE comment(
+    content_id int NOT NULL,
+    text varchar(255) NOT NULL,
+    student_id int,
+    teacher_id int,
+    post_time datetime,
+    FOREIGN KEY(content_id) REFERENCES content(content_id)
+);

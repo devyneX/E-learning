@@ -1,0 +1,9 @@
+swapno
+
+
+
+
+swapnil
+1. Log in and sign up button on the right. 
+2. round profile button/menu (check data camp). click should reveal submenu [profile, account] (same as categories). ON THE RIGHT.
+3. Log in as and sign up as input fields in log in and sign up pages

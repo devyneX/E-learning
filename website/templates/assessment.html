@@ -1,20 +1,23 @@
 {% extends 'base.html'%}
 
-{% block title %} {% endblock%}
+{% block title %}{{ assessment.assessment_title }}}{% endblock%}
 
 {% block content %}
 
-{% for question in questions %}
+<form>
+    {% for question in questions %}
 
-<p> {{ question.text }} </p>
-<input type="radio"> {{ question.option3 }}
-<input type="radio"> {{ question.option3 }}
-<input type="radio"> {{ question.option3 }}
-<input type="radio"> {{ question.option4 }}
+    <p> {{ question.text }} </p>
+    <input type="radio"> {{ question.option1 }}
+    <input type="radio"> {{ question.option2 }}
+    <input type="radio"> {{ question.option3 }}
+    <input type="radio"> {{ question.option4 }}
 
-{% endfor %}
 
-<button>submit</button>
+    {% endfor %}
+    <button>submit</button>
+
+</form>
 
 {% endblock%}
 

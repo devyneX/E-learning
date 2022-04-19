@@ -6,6 +6,7 @@
 
 {% for study_material in study_materials %}
 <!-- show the study materials  -->
+<a href="/course/{{ course.course_id }}/content/{{ study_material.content_id }}">{{ study_material.content_title }}</a><br>
 {% endfor %}
 
 <!-- show form to add content -->
@@ -13,11 +14,11 @@
 
 <!-- form to add content -->
 <div class="form-popup" id="addContent">
-    <form class="" method="POST">
+    <form action="{{ url_for('views.add_content', course_id=course.course_id) }}" class="" method="POST">
         <h1>Add Content</h1>
 
         <label for="title"><b>Content Title</b></label>
-        <input type="text" placeholder="Content Title" name="title" required><br>
+        <input type="text" placeholder="Content Title" name="content_title" required><br>
 
         <label for="link"><b>Link</b></label>
         <input type="url" placeholder="Link" name="link" required><br>
@@ -29,9 +30,17 @@
 
 {% for assessment in assessments %}
 <!-- show the study materials  -->
+<a href="/course/{{ course.course_id }}/assessment/{{ assessment.assessment_id }}">{{ assessment.title }}</a><br>
 {% endfor %}
 
-<button><a href="/add_assessment">Add Assessment</a></button>
+<button class="open-button" onclick="openForm('addAssessment')">Add Assessment</button>
 
+<div class="form-popup" id="addAssessment">
+    <form action="{{ url_for('views.add_assessment', course_id=course.course_id) }}" method="'POST">
+        <input type="text" name="assessment_title" placeholder="Assessment Title" required>
+        <button type="submit">Add</button>
+        <button type="button" class="" onclick="closeForm('addAssessment')">Close</button>
+    </form>
+</div>
 
 {% endblock%}
