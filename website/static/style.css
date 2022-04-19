@@ -633,7 +633,9 @@ nav .content .links{
 
 /* Course design starts here */
 .course_top{  
-  margin: 10px 60px 20px;
+  margin: 0px 60px;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
   height: 30vh;
   width: 92%;
   overflow: hidden;
@@ -644,7 +646,6 @@ nav .content .links{
   align-items: flex-start;
   justify-content: flex-start;
   color: #555;
-  border-radius: 50px;
   background-color: rgb(3, 78, 90);
 }
 .course_title{
@@ -656,7 +657,7 @@ nav .content .links{
   letter-spacing: 5px;
 }
 .course_content{
-  background-color: #cdd169;
+  background-color: #fefae0;
 }
 .course_description{
   margin: auto 10%;
@@ -682,18 +683,27 @@ nav .content .links{
 
 }
 .course_display{
-  background-color: #559de0;
+  background-color: #d9eadf;
   padding-top: 4rem;
   flex-wrap: wrap;
-  height:18rem;
-  width:25rem;
-  margin:3.5rem 2rem;
+  height:10rem;
+  width:80rem;
+  margin:2rem 2rem;
   flex-direction: column;
   text-align: center;
   justify-content:center ;
   border-radius: 1rem;
   box-shadow: .3rem .3rem 0 .1rem rgba(0, 0, 0, 0.3),
               .5rem .5rem .5rem rgba(0, 0, 0, 0.3);
+}
+.course_display_iner{
+  padding: .1em 1em;
+  text-decoration: none;
+  font-size: 45px; 
+  font-weight: bold;
+  line-height: 20px; 
+  text-align: center;
+  justify-content: center;
 }
 .course_button_container{
   display: flex;

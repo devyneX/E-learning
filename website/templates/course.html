@@ -20,61 +20,68 @@
             ipsa
             officiis.{{ course.description }}</span>
     </div>
-</div>
 
 
 
 
-<button type="button"><a href="/course/{{ course.course_id }}/enroll"></a></button>
 
-{% for study_material in study_materials %}
-<!-- show the study materials  -->
-<div class="display_container">
-    <div class="course_display">
-        <a href="/course/{{ course.course_id }}/content/{{ study_material.content_id }}">{{ study_material.content_title
-            }}</a>
+    <div class="course_button_container"><button class="open-button" type="button"><a
+                href="/course/{{ course.course_id }}/enroll"></a>Enroll</button>
     </div>
-</div>
-{% endfor %}
 
-<!-- show form to add content -->
-<div class="course_button_container">
-    <button class="open-button" onclick="openForm('addContent')">Add Content</button>
-</div>
-<!-- form to add content -->
-<div class="add_content_container">
-    <div class="form-popup" id="addContent">
-        <form action="{{ url_for('views.add_content', course_id=course.course_id) }}" class="" method="POST">
-            <h1>Add Content</h1>
-
-            <label for="title"><b>Content Title</b></label>
-            <input type="text" class="course_title" placeholder="Content Title" name="content_title" required><br>
-
-            <label for="link"></label>
-            <input type="url" class="course_url" placeholder="Link" name="link" required><br>
-
-            <button type="submit" class="course_submit">Add</button>
-            <button type="button" class="course_close" onclick="closeForm('addContent')">Close</button>
-        </form>
+    {% for study_material in study_materials %}
+    <!-- show the study materials  -->
+    <div class="display_container">
+        <div class="course_display">
+            <div class="course_display_iner">
+                <a href="/course/{{ course.course_id }}/content/{{ study_material.content_id }}">{{
+                    study_material.content_title
+                    }}</a>
+            </div>
+        </div>
     </div>
-</div>
+    {% endfor %}
 
-{% for assessment in assessments %}
-<!-- show the study materials  -->
-<a href="/course/{{ course.course_id }}/assessment/{{ assessment.assessment_id }}">{{ assessment.assessment_title
-    }}</a>
-{% endfor %}
+    <!-- show form to add content -->
+    <div class="course_button_container">
+        <button class="open-button" onclick="openForm('addContent')">Add Content</button>
+    </div>
+    <!-- form to add content -->
+    <div class="add_content_container">
+        <div class="form-popup" id="addContent">
+            <form action="{{ url_for('views.add_content', course_id=course.course_id) }}" class="" method="POST">
+                <h1>Add Content</h1>
 
-<div class="course_button_container">
-    <button class="open-button" onclick="openForm('addAssessment')">Add Assessment</button>
-</div>
-<div class="add_content_container">
-    <div class="form-popup" id="addAssessment">
-        <form action="{{ url_for('views.add_assessment', course_id=course.course_id) }}" method="'POST">
-            <input type="text" name="assessment_title" placeholder="Assessment Title" required>
-            <button class="course_add" type="submit">Add</button>
-            <button type="button" class="course_close" onclick="closeForm('addAssessment')">Close</button>
-        </form>
+                <label for="title"></label>
+                <input type="text" class="course_title" placeholder="Content Title" name="content_title" required><br>
+
+                <label for="link"></label>
+                <input type="url" class="course_url" placeholder="Link" name="link" required><br>
+
+                <button type="submit" class="course_submit">Add</button>
+                <button type="button" class="course_close" onclick="closeForm('addContent')">Close</button>
+            </form>
+        </div>
+    </div>
+
+    {% for assessment in assessments %}
+    <!-- show the study materials  -->
+    <a href="/course/{{ course.course_id }}/assessment/{{ assessment.assessment_id }}">{{
+        assessment.assessment_title
+        }}</a>
+    {% endfor %}
+
+    <div class="course_button_container">
+        <button class="open-button" onclick="openForm('addAssessment')">Add Assessment</button>
+    </div>
+    <div class="add_content_container">
+        <div class="form-popup" id="addAssessment">
+            <form action="{{ url_for('views.add_assessment', course_id=course.course_id) }}" method="'POST">
+                <input type="text" name="assessment_title" placeholder="Assessment Title" required>
+                <button class="course_add" type="submit">Add</button>
+                <button type="button" class="course_close" onclick="closeForm('addAssessment')">Close</button>
+            </form>
+        </div>
     </div>
 </div>
 
