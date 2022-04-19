@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');  */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
 
 :root{
@@ -532,7 +532,7 @@ nav .content .links{
 }
 
 /* Login and signup starts here */
-.login, .signup{  
+.login, .signup, .form-popup{  
   margin: 0;
   height: 100vh;
   width: 100vw;
@@ -545,8 +545,13 @@ nav .content .links{
   color: #555;
   background-color: #ecf0f3;
 }
+.add_content_container{
+  margin: auto;
+  width: 30%;
+  padding: 10px;
+}
 
-.login_form, .signup_form{
+.login_form, .signup_form, .form-popup{
   width: 430px;
   height: 700px;
   padding: 60px 35px 35px 35px;
@@ -567,12 +572,12 @@ nav .content .links{
   0px 0px 0px 5px #ecf0f3, 8px 8px 15px #a7aaaf,
   -8px -8px 15px #fff;
 }
-.login_title, .signup_title{
+.login_title, .signup_title, .form-popup{
   text-align: center;
   font-size: 28px;
   letter-spacing: 0.5px;
 }
-.login_content{
+.login_content,{
   width: 100%;
   padding: 75px 5px 5px 5px;
 }
@@ -580,7 +585,7 @@ nav .content .links{
   width: 100%;
 }
 
-.login_content input, .signup_content input{
+.login_content input, .signup_content input, .form-popup input{
   border: none;
   outline: none;
   background: none;
@@ -588,7 +593,7 @@ nav .content .links{
   color: #555;
   padding: 20px 10px 20px 5px;
 }
-.username, .password, .confirm_password, .first_name, .last_name, .email{
+.username, .password, .confirm_password, .first_name, .last_name, .email, .course_title, .course_url{
   margin-bottom: 30px;
   border-radius: 25px;
   box-shadow: inset 8px 8px 8px #cbced1, 
@@ -599,7 +604,10 @@ nav .content .links{
   height: 22px;
   margin: 0 10px -3px 25px;
 }
-.login_btn, .signup_btn{
+.course_close, .course_submit{
+  margin: 10px 10px 10px;
+}
+.login_btn, .signup_btn, .course_close, .course_submit, .course_add{
   outline: none;
   border: none;
   cursor: pointer;
@@ -624,18 +632,104 @@ nav .content .links{
 }
 
 /* Course design starts here */
-.course_body{  
-  margin: 0;
+.course_top{  
+  margin: 10px 60px 20px;
   height: 30vh;
-  width: 100vw;
+  width: 92%;
   overflow: hidden;
-  font-family: "Lato", sans-serif;
+  font-family: "serif";
   font-weight: 700;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
   color: #555;
-  background-color: rgb(36, 192, 54);
+  border-radius: 50px;
+  background-color: rgb(3, 78, 90);
+}
+.course_title{
+  margin: 15px auto;
+  font-size: 50px;
+  font-family: "serif" !important;
+  font-weight: bold;
+  color: #7c795d;
+  letter-spacing: 5px;
+}
+.course_content{
+  background-color: #cdd169;
+}
+.course_description{
+  margin: auto 10%;
+}
+.course_description h3 { 
+  color: #2e2d1f; 
+  font-family: 'Trocchi', serif;
+  font-size: 45px; 
+  font-weight: normal; 
+  line-height: 48px; 
+  margin: 0; }
+.course_description span{
+  color: #4c4a37;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  line-height: 32px;
+  margin: 0 0 24px;
+}
+.display_container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+}
+.course_display{
+  background-color: #559de0;
+  padding-top: 4rem;
+  flex-wrap: wrap;
+  height:18rem;
+  width:25rem;
+  margin:3.5rem 2rem;
+  flex-direction: column;
+  text-align: center;
+  justify-content:center ;
+  border-radius: 1rem;
+  box-shadow: .3rem .3rem 0 .1rem rgba(0, 0, 0, 0.3),
+              .5rem .5rem .5rem rgba(0, 0, 0, 0.3);
+}
+.course_button_container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.open-button {
+  margin: 10px 10px 10px;
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  -webkit-box-shadow: 3px 5px 3px #bdb9bd;
+  -moz-box-shadow: 3px 5px 3px #bdb9bd;
+  box-shadow: 3px 5px 3px #bdb9bd;
+  font-family: Georgia;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  border: solid #1f628d 2px;
+  text-decoration: none;
+}
+
+.open-button:hover {
+  background: #cc2f9a;
+  background-image: -webkit-linear-gradient(top, #cc2f9a, #3498db);
+  background-image: -moz-linear-gradient(top, #cc2f9a, #3498db);
+  background-image: -ms-linear-gradient(top, #cc2f9a, #3498db);
+  background-image: -o-linear-gradient(top, #cc2f9a, #3498db);
+  background-image: linear-gradient(to bottom, #cc2f9a, #3498db);
+  text-decoration: none;
 }
 
 /* Footer Style starts */
