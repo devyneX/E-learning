@@ -3,10 +3,12 @@
 {% block title %}Course{% endblock%}
 
 {% block content %}
+<section class="course_body">
+    Course Title: {{ course.course_title}}
+    Category: {{ course.category }}
+    Descriptioin: {{ course.description }}
+</section>
 
-Course Title: {{ course.course_title}}
-Category: {{ course.category }}
-Descriptioin: {{ course.description }}
 
 
 {% for study_material in study_materials %}

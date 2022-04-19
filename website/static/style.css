@@ -622,6 +622,22 @@ nav .content .links{
 .login_btn:active, .signup_btn:active{
   background-color: #88ef9e;
 }
+
+/* Course design starts here */
+.course_body{  
+  margin: 0;
+  height: 30vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  background-color: rgb(36, 192, 54);
+}
+
 /* Footer Style starts */
 .container{
   position: relative;
