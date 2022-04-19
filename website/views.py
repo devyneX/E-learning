@@ -37,7 +37,19 @@ def student():
 @views.route('/teacher_profile', methods=['GET', 'POST'])
 @login_required
 def teacher():
-    print(current_user.account_id)
+    # print(current_user.account_id)
+    if request.method == 'GET':
+        cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cur.execute("""SELECT * FROM course WHERE teacher_id = (SELECT teahcer_id FROM teacher WHERE account_id = %s)""",
+                    (current_user.account_id, ))
+        ls = cur.fetchall()
+        courses = []
+        for course in ls:
+            courses.append(Course(course['course_id'], course['course_title'],
+                           course['category'], course['description'], course['teacher_id']))
+
+        return render_template('teacher.html', user=current_user, courses=courses)
+
     if request.method == 'POST':
         course_title = request.form.get('course_title')
         category = request.form.get('category')
@@ -52,8 +64,8 @@ def teacher():
         cur.execute("""SELECT course_id FROM course WHERE course_title = %s and category = %s and description = %s and teacher_id = %s""",
                     (course_title, category, description, teacher_id))
         course_id = cur.fetchone()[0]
+        cur.close()
         return redirect(url_for('views.course', course_id=course_id))
-    return render_template('teacher.html', user=current_user)
 
 
 @views.route('/course/<course_id>', methods=['GET', 'POST'])
@@ -262,8 +274,8 @@ def assessment(course_id, assessment_id):
             ls = cur.fetchall()
             questions = []
             for question in ls:
-                questions.append(Question(
-                    question['text'], question['option1'], question['option2'], question['option3'], questions['option4']))
+                questions.append(Question(assessment_id, question['text'], question['option1'],
+                                 question['option2'], question['option3'], question['option4'], question['correct']))
 
             return render_template('assessment.html', user=current_user, course=course, assessment=assessment, questions=questions)
 

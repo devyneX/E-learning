@@ -3,6 +3,17 @@
 {% block title %} {% endblock%}
 
 {% block content %}
+
+Name: {{ teacher.firstname}} {{ teacher.lastname }}
+Average Course Rating: {{ avg_rating }}
+Created {{ course_count }} Courses
+Joined on {{ teacher.join_date }}
+
+Created Courses 
+{% for course in courses %}
+<a href="/course/{{ course.course_id }}">{{ course_title }}</a>
+{% endfor %}
+
 <button class="open-button" onclick="openForm('createCourse')">Create Course</button>
 <div class="form-popup" id="createCourse">
     <form class="" method="POST">

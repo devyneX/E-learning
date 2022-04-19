@@ -4,6 +4,11 @@
 
 {% block content %}
 
+Course Title: {{ course.course_title}}
+Category: {{ course.category }}
+Descriptioin: {{ course.description }}
+
+
 {% for study_material in study_materials %}
 <!-- show the study materials  -->
 <a href="/course/{{ course.course_id }}/content/{{ study_material.content_id }}">{{ study_material.content_title }}</a><br>
