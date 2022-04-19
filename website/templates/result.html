@@ -1,10 +1,13 @@
 {% extends 'base.html'%}
 
-{% block title %}{{ assessment.assessment_title }}}{% endblock%}
+{% block title %}Result{% endblock%}
 
 {% block content %}
 
-<form method="POST">
+
+<h1>{{ marks }}</h1>
+
+<!-- <form method="POST">
     {% for question in questions %}
 
     <label for="options{{ loop.index }}">{{ question.text }}</label>
@@ -17,7 +20,6 @@
     {% endfor %}
     <button>submit</button>
 
-</form>
+</form> -->
 
 {% endblock%}
-

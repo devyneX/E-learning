@@ -8,6 +8,7 @@ Course Title: {{ course.course_title}}
 Category: {{ course.category }}
 Descriptioin: {{ course.description }}
 
+<button type="button"><a href="/course/{{ course.course_id }}/enroll"></a></button>
 
 {% for study_material in study_materials %}
 <!-- show the study materials  -->

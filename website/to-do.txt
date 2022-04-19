@@ -1,9 +1,37 @@
 swapno
-
+1. comments 
+2. account page
+3. search
+4. browse
+5. enrollment
+6. profile view conditions
+7. course view conditions
 
 
 
 swapnil
 1. Log in and sign up button on the right. 
 2. round profile button/menu (check data camp). click should reveal submenu [profile, account] (same as categories). ON THE RIGHT.
-3. Log in as and sign up as input fields in log in and sign up pages
+3. course page design.
+4. content page design.
+5. assessment page design.
+6. teacher, student profile page design
+7. account page desgin.
+8. question add page design
+9. browse page design
+
+course page e rating add kora lagbe
+basically course title ar course category r niche Course Rating {{ rating }} and Rated by {{ rating_count }} students eita likha lagbe
+box er moddhe ekta enrollment button add kora lagbe
+ar box er likha gula left justified koira dekhis toh kemon lage... datacamp e left justified 
+
+content page e title add korsi... beshi design kora lagbe na just justification thik rakhis 
+comment er part tuku na bujhle baki rakhis
+
+profile page, assessment page ar question add page eigula chaile design korte paros...
+baki gular backend add hoy nai plus koyektar html o add hoy nai so oigulay ektu pera 
+
+
+
+
+

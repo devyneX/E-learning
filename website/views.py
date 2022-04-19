@@ -2,7 +2,7 @@ import MySQLdb
 from flask import Blueprint, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
 from datetime import date
-from .models import Course, Content, Assessment, Question, Teacher
+from .models import Course, Content, Assessment, Question, Student, Teacher
 from . import mysql
 
 
@@ -14,9 +14,11 @@ def home():
     return render_template('home.html', user=current_user)
 
 
-# @views.route('/<search_term>')
-# def browse():
-#     pass
+@views.route('/account')
+def account():
+    pass
+
+
 @views.route('/profile')
 @login_required
 def profile():
@@ -31,11 +33,30 @@ def profile():
 @views.route('/student_profile')
 @login_required
 def student():
-    pass
+    if request.method == 'GET':
+        cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cur.execute("""SELECT * FROM student WHERE account_id = %s""",
+                    (current_user.account_id, ))
+        result = cur.fetchone()
+        student_obj = Student(result['student_id'], result['firstname'],
+                              result['lastname'], result['join_date'], result['account_id'])
+        cur.execute("""SELECT * FROM course c WHERE c.course_id in (SELECT course_id FROM enrollment WHERE student_id = %s)""",
+                    (student_obj.student_id, ))
+        ls = cur.fetchall()
+        courses = []
+        for course in ls:
+            courses.append(Course(course['course_id'], course['course_title'],
+                           course['category'], course['description'], course['teacher_id']))
+
+        cur.execute("""SELECT * FROM assessment a WHERE a.assessment_id in (SELECT assessment_id FROM attended_assessment WHERE student_id = %s)""",
+                    (student_obj.student_id, ))
+        ls = cur.fetchall()
+
+        return render_template('student.html', user=current_user, student=student_obj, courses=courses, course_count=len(courses), assessment_count=len(ls))
 
 
-@views.route('/teacher_profile', methods=['GET', 'POST'])
-@login_required
+@ views.route('/teacher_profile', methods=['GET', 'POST'])
+@ login_required
 def teacher():
     # print(current_user.account_id)
     if request.method == 'GET':
@@ -73,8 +94,8 @@ def teacher():
         return redirect(url_for('views.course', course_id=course_id))
 
 
-@views.route('/course/<course_id>', methods=['GET', 'POST'])
-@login_required
+@ views.route('/course/<course_id>', methods=['GET', 'POST'])
+@ login_required
 def course(course_id):
     if request.method == 'GET':
         cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
@@ -241,15 +262,10 @@ def content(course_id, content_id):
         else:
             # cur.execute("""SELECT * FROM comment""")
             comments = []
-            return render_template('content.html', user=current_user, course=course, content=content, comments=comments)
+            return render_template('content.html', user=current_user, course=course, study_material=content, comments=comments)
 
     if request.method == 'POST':
         pass
-
-# @views.route('/add_content')
-# @login_required
-# def add_content():
-#     pass
 
 
 @views.route('course/<course_id>/assessment/<assessment_id>', methods=['GET', 'POST'])
@@ -277,6 +293,7 @@ def assessment(course_id, assessment_id):
             cur.execute(
                 """SELECT * FROM questions WHERE assessment_id = %s""", (assessment_id, ))
             ls = cur.fetchall()
+            cur.close()
             questions = []
             for question in ls:
                 questions.append(Question(assessment_id, question['text'], question['option1'],
@@ -285,4 +302,33 @@ def assessment(course_id, assessment_id):
             return render_template('assessment.html', user=current_user, course=course, assessment=assessment, questions=questions)
 
     if request.method == 'POST':
-        pass
+        marks = 0
+        cur = mysql.connection.cursor()
+        cur.execute(
+            """SELECT correct FROM questions q WHERE q.assessment_id = %s""", (assessment_id, ))
+        correct_answers = [x[0] for x in cur.fetchall()]
+        for k, correct in zip(request.form.keys(), correct_answers):
+            # print(type(request.form[k]), type(correct))
+            if int(request.form[k]) == correct:
+                marks += 1
+
+        cur.execute("""SELECT student_id FROM student WHERE account_id = %s""",
+                    (current_user.account_id, ))
+        student_id = cur.fetchone()[0]
+        # print(student_id)
+        cur.execute(
+            """INSERT INTO attended_assessment (student_id, assessment_id, result) VALUES (%s, %s, %s)""", (student_id, assessment_id, f'{marks}/{len(correct_answers)}'))
+        mysql.connection.commit()
+        cur.close()
+        # print(student_id)
+        return redirect(url_for('views.result', course_id=course_id, assessment_id=assessment_id))
+
+
+@views.route('/course/<course_id>/assessment/<assessment_id>/result', methods=['GET'])
+@login_required
+def result(course_id, assessment_id):
+    cur = mysql.connection.cursor()
+    cur.execute("""SELECT result FROM attended_assessment a WHERE a.assessment_id = %s AND a.student_id = (SELECT student_id FROM student WHERE account_id= %s)""",
+                (assessment_id, current_user.account_id))
+    marks = cur.fetchone()[0]
+    return render_template('result.html', user=current_user, marks=marks)
