@@ -4,14 +4,14 @@
 
 {% block content %}
 
-Name: {{ student.firstname}} {{ student.lastname }}
-Enrolled in {{ course_count }} Course
-Attended {{ assessment_count }} Assessments 
-Joined on {{ student.join_date }}
+Name: {{ student.firstname}} {{ student.lastname }}<br>
+Enrolled in {{ course_count }} Course<br>
+Attended {{ assessment_count }} Assessments <br>
+Joined on {{ student.join_date }}<br>
 
 Enrolled Courses
 {% for course in courses %}
-<a href="/course/{{ course.course_id }}">{{ course_title }}</a>
+<a href="/course/{{ course.course_id }}">{{ course_title }}</a><br>
 {% endfor %}
 
 {% endblock%}

@@ -4,14 +4,14 @@
 
 {% block content %}
 
-Name: {{ teacher.firstname}} {{ teacher.lastname }}
-Average Course Rating: {{ avg_rating }}
-Created {{ course_count }} Courses
-Joined on {{ teacher.join_date }}
+Name: {{ teacher.firstname}} {{ teacher.lastname }}<br>
+Average Course Rating: {{ avg_rating }}<br>
+Created {{ course_count }} Courses<br>
+Joined on {{ teacher.join_date }}<br>
 
-Created Courses 
+Created Courses <br>
 {% for course in courses %}
-<a href="/course/{{ course.course_id }}">{{ course_title }}</a>
+<a href="/course/{{ course.course_id }}">{{ course.course_title }}</a><br>
 {% endfor %}
 
 <button class="open-button" onclick="openForm('createCourse')">Create Course</button>

@@ -35,7 +35,7 @@ Descriptioin: {{ course.description }}
 
 {% for assessment in assessments %}
 <!-- show the study materials  -->
-<a href="/course/{{ course.course_id }}/assessment/{{ assessment.assessment_id }}">{{ assessment.title }}</a><br>
+<a href="/course/{{ course.course_id }}/assessment/{{ assessment.assessment_id }}">{{ assessment.assessment_title }}</a><br>
 {% endfor %}
 
 <button class="open-button" onclick="openForm('addAssessment')">Add Assessment</button>

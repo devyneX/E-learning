@@ -7,11 +7,11 @@
 <form>
     {% for question in questions %}
 
-    <p> {{ question.text }} </p>
+    <p> {{ question.text }} </p> <br>
     <input type="radio"> {{ question.option1 }}
     <input type="radio"> {{ question.option2 }}
     <input type="radio"> {{ question.option3 }}
-    <input type="radio"> {{ question.option4 }}
+    <input type="radio"> {{ question.option4 }} <br>
 
 
     {% endfor %}
