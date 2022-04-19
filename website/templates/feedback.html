@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+
+{% block title %}Course{% endblock%}
+
+{% block content %}
+<div class="feedback_content">
+    <div class="feedback_container">
+        <div class="feedback_head">
+            <div class="feedback_heading">
+                <h1>Share your experience</h1>
+            </div>
+            <div class="feedback_close">
+                <div class="feedback_s feedback_s1"></div>
+                <div class="feedback_s feedback_s2"></div>
+            </div>
+        </div>
+        <div class="feedback_mid">
+            <div class="feedback_media"><img src="https://cdn-icons-png.flaticon.com/128/3260/3260838.png" alt="angry">
+            </div>
+            <div class="feedback_media"><img src="https://cdn-icons-png.flaticon.com/128/42/42901.png" alt="moderate">
+            </div>
+            <div class="feedback_media"><img src="https://cdn-icons-png.flaticon.com/128/3260/3260877.png"
+                    alt="neutral"></div>
+            <div class="feedback_media"><img src="https://cdn-icons-png.flaticon.com/128/569/569501.png" alt="smile"
+                    class="feedback_active"></div>
+            <div class="feedback_media"><img src="https://cdn-icons-png.flaticon.com/128/1356/1356639.png" alt="happy">
+            </div>
+        </div>
+        <div class="feedback_textarea">
+            <p>Share your experience</p>
+            <textarea name="exp" id="exp" placeholder="Let we know..."></textarea>
+        </div>
+        <div class="feedback_end">
+            <div class="feedback_submission">
+                <button class="feedback_sub feedback_btn">Send</button>
+            </div>
+            <div class="feedback_skip">
+                <button class="feedback_skp feedback_btn">Skip</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}

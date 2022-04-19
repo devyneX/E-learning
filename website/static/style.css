@@ -607,7 +607,7 @@ nav .content .links{
 .course_close, .course_submit{
   margin: 10px 10px 10px;
 }
-.login_btn, .signup_btn, .course_close, .course_submit, .course_add{
+.login_btn, .signup_btn, .course_close, .course_submit{
   outline: none;
   border: none;
   cursor: pointer;
@@ -741,6 +741,130 @@ nav .content .links{
   background-image: linear-gradient(to bottom, #cc2f9a, #3498db);
   text-decoration: none;
 }
+/* feedback design */
+
+.feedback_content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(105, 190, 233);
+  width: 100%; min-height: 100vh;
+}
+.feedback_container{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 400px;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 10px rgba(0,0,0,0.2);
+}
+.feedback_mid{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.feedback_head, .feedback_mid, .feedback_textarea, .feedback_end{
+  padding: 15px;
+}
+.feedback_mid img{
+  height: 50px; width: 50px;
+  cursor: pointer;
+  background-color: rgba(233, 212, 97, 0.507);
+  border-radius: 50%;
+  transition: 0.1s linear;
+}
+.feedback_mid img:hover{
+  background-color: gold;
+  transform: scale(1.2);
+}
+.feedback_active{
+background-color: rgba(2, 48, 71, 1);
+  transform: scale(1.2);
+}
+.feedback_head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.feedback_heading{
+  width: 70%;
+}
+.feedback_heading h1{
+  font-size: 25px;
+  border-bottom: 8px solid rgba(2, 48, 71, 1);
+  font-weight: bolder;
+}
+.feedback_close{
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: 0.1s linear;
+  padding: 0 10px;
+}
+.feedback_close:hover{
+  transform: scale(1.2);
+}
+.feedback_s{
+  width: 1.5px; height: 20px;
+  background-color: black;
+  border-radius: 100px;
+}
+.feedback_s1{
+  transform: translateX(1.5px) rotate(45deg);
+}
+.feedback_s2{
+  transform: rotate(-45deg);
+}
+.feedback_textarea{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.feedback_textarea p{
+  font-size: 18px;
+}
+textarea{
+  outline: none;
+  resize: none;
+  height: 100px;
+  border: 1.5px solid black;
+  border-radius: 10px;
+  padding: 5px;
+}
+.feedback_end{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.feedback_btn{
+  width: 150px;
+  height: 35px;
+  border: 1px solid black;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 15px;
+}
+.feedback_sub{
+  background: gold;
+  border: 1px solid transparent;
+  transition: 0.1s linear;
+}
+.feedback_skp{
+  transition: 0.1s linear;
+  border: 1px solid black;
+}
+.feedback_skp:hover{
+  background-color: black;
+  color: white;
+}
+.feedback_sub:hover{
+  background-color: black;
+  border: 1px solid black;
+  color: white;
+}
+
 
 /* Footer Style starts */
 .container{

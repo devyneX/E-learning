@@ -2,11 +2,17 @@
 
 {% block title %}{{ study_material.content_title }}{% endblock%}
 
-{% block content %} 
+{% block content %}
+<div class="content_container">
+    <h1>{{ study_material.content_title }}</h1>
+</div>
 
-<h1>{{ study_material.content_title }}</h1>
-
-<iframe src="{{ study_material.link }}" frameborder="0"></iframe>
+<center>
+    <video controls loop preload="none" width="500px">
+        <source src="{{ study_material.link }}" type="video/mp4">
+        Video not available
+    </video>
+</center>
 
 {% for comment in comments %}
 
