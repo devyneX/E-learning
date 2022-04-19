@@ -14,23 +14,21 @@ class User(UserMixin):
 
 
 class Student:
-    def __init__(self, student_id, firstname, lastname, join_date, account_id, enrolled):
+    def __init__(self, student_id, firstname, lastname, join_date, account_id):
         self.student_id = student_id
         self.firstname = firstname
         self.lastname = lastname
         self.join_date = join_date
         self.account_id = account_id
-        self.enrolled = enrolled
 
 
 class Teacher:
-    def __init__(self, teacher_id, firstname, lastname, join_date, account_id, created_courses):
+    def __init__(self, teacher_id, firstname, lastname, join_date, account_id):
         self.teacher_id = teacher_id
         self.firstname = firstname
         self.lastname = lastname
         self.join_date = join_date
         self.account_id = account_id
-        self.created_courses = created_courses
 
 
 class Course:

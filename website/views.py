@@ -2,7 +2,7 @@ import MySQLdb
 from flask import Blueprint, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
 from datetime import date
-from .models import Course, Content, Assessment, Question
+from .models import Course, Content, Assessment, Question, Teacher
 from . import mysql
 
 
@@ -40,15 +40,20 @@ def teacher():
     # print(current_user.account_id)
     if request.method == 'GET':
         cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cur.execute("""SELECT * FROM course WHERE teacher_id = (SELECT teahcer_id FROM teacher WHERE account_id = %s)""",
+        cur.execute("""SELECT * FROM teacher WHERE account_id = %s""",
                     (current_user.account_id, ))
+        result = cur.fetchone()
+        teacher_obj = Teacher(result['teacher_id'], result['firstname'],
+                              result['lastname'], result['join_date'], result['account_id'])
+        cur.execute("""SELECT * FROM course WHERE teacher_id = %s""",
+                    (teacher_obj.teacher_id, ))
         ls = cur.fetchall()
         courses = []
         for course in ls:
             courses.append(Course(course['course_id'], course['course_title'],
                            course['category'], course['description'], course['teacher_id']))
 
-        return render_template('teacher.html', user=current_user, courses=courses)
+        return render_template('teacher.html', user=current_user, teacher=teacher_obj, courses=courses, course_count=len(courses))
 
     if request.method == 'POST':
         course_title = request.form.get('course_title')
