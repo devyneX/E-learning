@@ -5,10 +5,10 @@
 {% block content %}
 <div class="course_content">
     <section class="course_top">
-        <div class="course_title">
+        <div class="course_top_title">
             Course Title: {{ course.course_title}}
         </div>
-        <div class="course_title">
+        <div class="course_top_title">
             Category: {{ course.category }}
         </div>
 
@@ -29,7 +29,7 @@
         <button class="open-button" type="button" id="enroll_button">Enroll</button>
         <script>
             document.getElementById("enroll_button").onclick = function () {
-                    location.href = "{{ url_for('views.enroll', course_id = course.course_id) }}"
+                location.href = "{{ url_for('views.enroll', course_id = course.course_id) }}"
             };
         </script>
     </div>
@@ -44,13 +44,15 @@
     </div>
     {% endif %}
 
-    <h1>Contents</h1>
+    <div class="course_heading">
+        <h1>Contents</h1>
+    </div>
     {% for study_material in study_materials %}
     <!-- show the study materials  -->
     <div class="display_container">
         <div class="course_display">
             <div class="course_display_iner">
-                
+
                 <a href="/course/{{ course.course_id }}/content/{{ study_material.content_id }}">{{
                     study_material.content_title
                     }}</a>
@@ -84,13 +86,16 @@
     </div>
     {% endif %}
 
-    <h1>Assessments</h1>
+    <div class="course_heading">
+        <h1>Assessments</h1>
+    </div>
     {% for assessment in assessments %}
     <!-- show the study materials  -->
     <div class="display_container">
         <div class="course_display">
             <div class="course_display_iner">
-                <a href="/course/{{ course.course_id }}/assessment/{{ assessment.assessment_id }}">{{ assessment.assessment_title }}</a>
+                <a href="/course/{{ course.course_id }}/assessment/{{ assessment.assessment_id }}">{{
+                    assessment.assessment_title }}</a>
             </div>
         </div>
     </div>
@@ -100,7 +105,7 @@
     <div class="course_button_container">
         <button class="open-button" onclick="openForm('addAssessment')">Add Assessment</button>
     </div>
-    
+
     <div class="add_content_container">
         <div class="form-popup" id="addAssessment">
             <form action="{{ url_for('views.add_assessment', course_id=course.course_id) }}" method="'POST">
@@ -109,7 +114,7 @@
                 <label for="assessment_title"></label>
                 <input type="text" class="course_title" name="assessment_title" placeholder="Assessment Title" required>
                 <button class="course_submit" type="submit">Add</h1>
-                <button type="button" class="course_close" onclick="closeForm('addAssessment')">Close</button>
+                    <button type="button" class="course_close" onclick="closeForm('addAssessment')">Close</button>
             </form>
         </div>
     </div>

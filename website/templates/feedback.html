@@ -3,40 +3,35 @@
 {% block title %}Course{% endblock%}
 
 {% block content %}
-<div class="feedback_content">
+<div class="feedback_body">
+    <center>
+        <h1>Feedback</h1>
+    </center>
     <div class="feedback_container">
-        <div class="feedback_head">
-            <div class="feedback_heading">
-                <h1>Share your experience</h1>
-            </div>
-            <div class="feedback_close">
-                <div class="feedback_s feedback_s1"></div>
-                <div class="feedback_s feedback_s2"></div>
-            </div>
+        <div class="feedback_post">
+            <div class="feedback_text">Thanks for rating us!</div>
+            <div class="feedback_edit">EDIT</div>
         </div>
-        <div class="feedback_mid">
-            <div class="feedback_media"><img src="https://cdn-icons-png.flaticon.com/128/3260/3260838.png" alt="angry">
-            </div>
-            <div class="feedback_media"><img src="https://cdn-icons-png.flaticon.com/128/42/42901.png" alt="moderate">
-            </div>
-            <div class="feedback_media"><img src="https://cdn-icons-png.flaticon.com/128/3260/3260877.png"
-                    alt="neutral"></div>
-            <div class="feedback_media"><img src="https://cdn-icons-png.flaticon.com/128/569/569501.png" alt="smile"
-                    class="feedback_active"></div>
-            <div class="feedback_media"><img src="https://cdn-icons-png.flaticon.com/128/1356/1356639.png" alt="happy">
-            </div>
-        </div>
-        <div class="feedback_textarea">
-            <p>Share your experience</p>
-            <textarea name="exp" id="exp" placeholder="Let we know..."></textarea>
-        </div>
-        <div class="feedback_end">
-            <div class="feedback_submission">
-                <button class="feedback_sub feedback_btn">Send</button>
-            </div>
-            <div class="feedback_skip">
-                <button class="feedback_skp feedback_btn">Skip</button>
-            </div>
+        <div class="feedback_star-widget">
+            <input type="radio" name="rate" id="rate-5">
+            <label for="rate-5" class="fas fa-star"></label>
+            <input type="radio" name="rate" id="rate-4">
+            <label for="rate-4" class="fas fa-star"></label>
+            <input type="radio" name="rate" id="rate-3">
+            <label for="rate-3" class="fas fa-star"></label>
+            <input type="radio" name="rate" id="rate-2">
+            <label for="rate-2" class="fas fa-star"></label>
+            <input type="radio" name="rate" id="rate-1">
+            <label for="rate-1" class="fas fa-star"></label>
+            <form action="#">
+                <header></header>
+                <div class="feedback_textarea">
+                    <textarea cols="30" placeholder="Describe your experience.."></textarea>
+                </div>
+                <div class="feedback_btn">
+                    <button type="submit">Post</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

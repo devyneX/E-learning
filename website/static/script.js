@@ -7,12 +7,17 @@ function closeForm(id) {
 }
 
 
-const container = document.querySelector(".feedback_container"),
-      privacy = container.querySelector(".feedback_post .feedback_privacy"),
-      arrowBack = container.querySelector(".feedback_audience .feedback_arrow-back");
-      privacy.addEventListener("click", () => {
-        container.classList.add("active");
-      });
-      arrowBack.addEventListener("click", () => {
-        container.classList.remove("active");
-      });
+const btn = document.querySelector("button");
+const post = document.querySelector(".feedback_post");
+const widget = document.querySelector(".feedback_star-widget");
+const editBtn = document.querySelector(".feedback_edit");
+btn.onclick = () => {
+    widget.style.display = "none";
+    post.style.display = "block";
+    editBtn.onclick = () => {
+        widget.style.display = "block";
+        post.style.display = "none";
+    }
+    return false;
+}
+

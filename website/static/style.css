@@ -650,7 +650,7 @@ nav .content .links{
   color: #555;
   background-color: rgb(3, 78, 90);
 }
-.course_title{
+.course_top_title{
   margin: 15px auto;
   font-size: 50px;
   font-family: "serif" !important;
@@ -745,131 +745,180 @@ nav .content .links{
   background-image: linear-gradient(to bottom, #cc2f9a, #3498db);
   text-decoration: none;
 }
+
+.course_heading h1{
+  font-size: 50px;
+  margin-left: 180px;
+  font-weight: 500;
+  position: relative;
+  font-family: 'Times New Roman', Times, serif;
+}
+.course_heading h1::before{
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0;
+  height: 3px;
+  width: 50vh;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+
 /* feedback design */
 
-.feedback_content{
+.feedback_body{
+  display: grid;
+  height: 100%;
+  place-items: center;
+  text-align: center;
+  background: rgb(242, 242, 242);
+}
+.feedback_container{
+  position: relative;
+  margin: 300px 500px 500px;
+  width: 400px;
+  background: rgb(110, 174, 210);
+  padding: 20px 30px;
+  border: 1px solid #444;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: rgb(105, 190, 233); */
-  width: 100%; min-height: 100vh;
-}
-.feedback_container{
-  background-color: white;
-  display: flex;
   flex-direction: column;
-  width: 350px;
-  height: 400px;
-  justify-content: space-evenly;
-  border-radius: 10px;
-  box-shadow: 0 0 10px 10px rgba(0,0,0,0.2);
+  box-shadow: 3px 3px 8px #b1b1b1, 
+  -3px -3px 8px #fff;
 }
-.feedback_mid{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+.feedback_container .feedback_post{
+  display: none;
 }
-.feedback_head, .feedback_mid, .feedback_textarea, .feedback_end{
-  padding: 15px;
-}
-.feedback_mid img{
-  height: 50px; width: 50px;
-  cursor: pointer;
-  background-color: rgba(233, 212, 97, 0.507);
-  border-radius: 50%;
-  transition: 0.1s linear;
-}
-.feedback_mid img:hover{
-  background-color: gold;
-  transform: scale(1.2);
-}
-.feedback_active{
-background-color: rgba(2, 48, 71, 1);
-  transform: scale(1.2);
-}
-.feedback_head{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.feedback_heading{
-  width: 70%;
-}
-.feedback_heading h1{
+.feedback_container .feedback_text{
   font-size: 25px;
-  border-bottom: 8px solid rgba(2, 48, 71, 1);
-  font-weight: bolder;
+  color: #666;
+  font-weight: 500;
 }
-.feedback_close{
-  display: flex;
-  justify-content: space-between;
+.feedback_container .feedback_edit{
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 16px;
+  color: #666;
+  font-weight: 500;
   cursor: pointer;
-  transition: 0.1s linear;
-  padding: 0 10px;
 }
-.feedback_close:hover{
-  transform: scale(1.2);
+.feedback_container .feedback_edit:hover{
+  text-decoration: underline;
 }
-.feedback_s{
-  width: 1.5px; height: 20px;
-  background-color: black;
-  border-radius: 100px;
+.feedback_container .feedback_star-widget input{
+  display: none;
 }
-.feedback_s1{
-  transform: translateX(1.5px) rotate(45deg);
+.feedback_star-widget label{
+  font-size: 40px;
+  color: rgb(236, 221, 221);
+  padding: 10px;
+  float: right;
+  transition: all 0.2s ease;
 }
-.feedback_s2{
-  transform: rotate(-45deg);
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label{
+  color: #fd4;
 }
-.feedback_textarea{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+input:checked ~ label{
+  color: #fd4;
 }
-.feedback_textarea p{
-  font-size: 18px;
+input#rate-5:checked ~ label{
+  color: #fe7;
+  text-shadow: 0 0 20px #952;
 }
-textarea{
-  outline: none;
-  resize: none;
+#rate-1:checked ~ form header:before{
+  content: "I just hate it ";
+}
+#rate-2:checked ~ form header:before{
+  content: "I don't like it ";
+}
+#rate-3:checked ~ form header:before{
+  content: "It is awesome ";
+}
+#rate-4:checked ~ form header:before{
+  content: "I just like it ";
+}
+#rate-5:checked ~ form header:before{
+  content: "I just love it ";
+}
+.feedback_container form{
+  display: none;
+}
+input:checked ~ form{
+  display: block;
+}
+form header{
+  width: 100%;
+  font-size: 25px;
+  color: #fe7;
+  font-weight: 500;
+  margin: 5px 0 20px 0;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+form .feedback_textarea{
   height: 100px;
-  border: 1.5px solid black;
-  border-radius: 10px;
-  padding: 5px;
+  width: 100%;
+  overflow: hidden;
 }
-.feedback_end{
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+form .feedback_textarea textarea{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  color: rgb(10, 10, 10);
+  border: 1px solid rgb(248, 238, 238);
+  background: rgb(242, 232, 232);
+  padding: 10px;
+  font-size: 17px;
+  resize: none;
 }
-.feedback_btn{
-  width: 150px;
-  height: 35px;
-  border: 1px solid black;
+.feedback_textarea textarea:focus{
+  border-color: #444;
+}
+form .feedback_btn{
+  height: 45px;
+  width: 100%;
+  margin: 15px 0;
+}
+form .feedback_btn button{
+  height: 100%;
+  width: 100%;
+  border: 1px solid #444;
+  outline: none;
+  background: rgb(254, 251, 251);
+  color: #999;
+  font-size: 17px;
+  font-weight: 500;
+  text-transform: uppercase;
   cursor: pointer;
-  background-color: transparent;
-  font-size: 15px;
+  transition: all 0.3s ease;
 }
-.feedback_sub{
-  background: gold;
-  border: 1px solid transparent;
-  transition: 0.1s linear;
-}
-.feedback_skp{
-  transition: 0.1s linear;
-  border: 1px solid black;
-}
-.feedback_skp:hover{
-  background-color: black;
-  color: white;
-}
-.feedback_sub:hover{
-  background-color: black;
-  border: 1px solid black;
-  color: white;
+form .feedback_btn button:hover{
+  background: rgb(10, 33, 98);
 }
  /* profile design */
 
+
+ .right_side_card_container .profile_heading{
+  font-size: 50px;
+  margin-left: 10px;
+  font-weight: 500;
+  position: relative;
+}
+.right_side_card_container .profile_heading::before{
+  content: "";
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+  height: 3px;
+  width: 130vh;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
 .profile_container{
   display: flex;
   flex-wrap: wrap;
@@ -877,7 +926,7 @@ textarea{
   /* background-color: #02c8db; */
 }
 .left_side_card{
-  background-color: #3a5c5f;
+  background-color: #186b71;
   margin: 10px 10px 10px;
   min-width: 35vh;
   display: flex;
@@ -885,6 +934,7 @@ textarea{
   align-items: center;
   justify-content: flex-start;
   border-radius: 10px;
+  box-shadow: 5px 3px 7px 4px rgba(56,13,40,0.44);
 }
 .information{
   /* background-color: gold; */
@@ -895,20 +945,29 @@ textarea{
 
 .information h3{
   color: white;
+  padding: 20px 20px 20px;
 }
-
+.information h1{
+  font-size: 30px;
+  margin-left: 15px;
+}
 .right_side_card_container{
   /* background-color: #4c4a37; */
   margin: 10px 10px 10px;
 }
 
 .right_side_card{
-  background-color: #1f628d;
+  background-color: #c0ddee;
   width: 140vh;
   min-height: 100px;
   display: flex;
   flex-direction: column;
   margin: 10px 10px 10px;
+  border-radius: 10px;
+  box-shadow: 5px 3px 7px 4px rgba(56,13,40,0.44);
+}
+.right_side_card h1, .right_side_card p{
+  margin-left: 20px;
 }
 
 .css-after {
@@ -1062,6 +1121,7 @@ ul{
 }
 .form-popup {
   display: none;
+  margin-left: 5vw;
 }
 .footer-col{
    width: 25%;
