@@ -657,7 +657,7 @@ nav .content .links{
   letter-spacing: 5px;
 }
 .course_content{
-  background-color: #fefae0;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 .course_description{
   margin: auto 10%;
@@ -683,7 +683,7 @@ nav .content .links{
 
 }
 .course_display{
-  background-color: #d9eadf;
+  background-color: #f8f9f6;
   padding-top: 4rem;
   flex-wrap: wrap;
   height:10rem;
