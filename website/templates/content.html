@@ -8,10 +8,12 @@
 </div>
 
 <center>
-    <video controls loop preload="none" width="500px">
+    
+    <!-- <video controls loop preload="none" width="500px">
         <source src="{{ study_material.link }}" type="video/mp4">
         Video not available
-    </video>
+    </video> -->
+    <iframe src="{{ study_material.link }}" frameborder="10" width="80%" height="600px"></iframe>
 </center>
 
 {% for comment in comments %}

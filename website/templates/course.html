@@ -29,6 +29,10 @@
                 href="/course/{{ course.course_id }}/enroll"></a>Enroll</button>
     </div>
 
+    <div class="course_button_container"><button class="open-button" type="button"><a
+                href="/course/{{ course.course_id }}/enroll"></a>Feedback</button>
+    </div>
+
     {% for study_material in study_materials %}
     <!-- show the study materials  -->
     <div class="display_container">
@@ -49,7 +53,7 @@
     <!-- form to add content -->
     <div class="add_content_container">
         <div class="form-popup" id="addContent">
-            <form action="{{ url_for('views.add_content', course_id=course.course_id) }}" class="" method="POST">
+            <form action="{{ url_for('views.add_content', course_id=course.course_id) }}" method="POST">
                 <h1>Add Content</h1>
 
                 <label for="title"></label>
@@ -66,9 +70,13 @@
 
     {% for assessment in assessments %}
     <!-- show the study materials  -->
-    <a href="/course/{{ course.course_id }}/assessment/{{ assessment.assessment_id }}">{{
-        assessment.assessment_title
-        }}</a>
+    <div class="display_container">
+        <div class="course_display">
+            <div class="course_display_iner">
+                <a href="/course/{{ course.course_id }}/assessment/{{ assessment.assessment_id }}">{{ assessment.assessment_title }}</a>
+            </div>
+        </div>
+    </div>
     {% endfor %}
 
     <div class="course_button_container">
@@ -77,7 +85,8 @@
     <div class="add_content_container">
         <div class="form-popup" id="addAssessment">
             <form action="{{ url_for('views.add_assessment', course_id=course.course_id) }}" method="'POST">
-                <input type="text" name="assessment_title" placeholder="Assessment Title" required>
+                <h2>Add Assessment</h2>
+                <input type="text" class="course_title" name="assessment_title" placeholder="Assessment Title" required>
                 <button class="course_submit" type="submit">Add</button>
                 <button type="button" class="course_close" onclick="closeForm('addAssessment')">Close</button>
             </form>
