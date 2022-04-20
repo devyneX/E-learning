@@ -16,7 +16,7 @@ def home():
 
 @views.route('/account')
 def account():
-    pass
+    return render_template('account.html', user=current_user)
 
 
 @views.route('/profile')
@@ -137,10 +137,10 @@ def course(course_id):
     # return render_template('course.html', user=current_user, course=course, rating=rating, rating_count=rating_count, study_materials=contents, assessments=assessments)
 
 
-# @views.route('/add_course')
-# @login_required
-# def add_course():
-#     pass
+@views.route('/course/<course_id>/feedback')
+@login_required
+def feedback(course_id):
+    return render_template('feedback.html', user=current_user)
 
 
 @views.route('/course/<course_id>/add_content', methods=['POST'])
@@ -167,13 +167,14 @@ def add_content(course_id):
 @login_required
 def add_assessment(course_id):
     assessment_title = request.form.get('assessment_title')
-    print('assessment_title' in request.form)
-    return
+    print(request.form.get('assessment_title'))
+    # return
 
     cur = mysql.connection.cursor()
     cur.execute("""SELECT teacher_id FROM teacher WHERE account_id = %s""",
                 (current_user.account_id, ))
     teacher = cur.fetchone()[0]
+    print(teacher)
     cur.execute(
         """INSERT INTO assessment (assessment_title, course_id, teacher_id) VALUES (%s, %s, %s)""", (assessment_title, course_id, teacher))
     mysql.connection.commit()
