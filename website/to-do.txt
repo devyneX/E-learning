@@ -3,7 +3,6 @@ swapno
 4. browse
 5. enrollment
 6. profile view conditions
-7. course view conditions
 8. flash messages
 
 

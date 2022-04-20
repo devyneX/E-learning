@@ -115,15 +115,12 @@ def course(course_id):
             # no page
             pass
         else:
-            cur.execute("""SELECT teacher_id FROM teacher WHERE account_id = %s""",
-                        (current_user.account_id, ))
-            teacher = cur.fetchone()['teacher_id']
             cur.execute(
                 """SELECT COUNT(star) as count, AVG(star) as avg FROM feedback WHERE course_id = %s""", (course_id, ))
             rating_result = cur.fetchone()
             rating_count, rating = rating_result['count'], rating_result['avg']
             course = Course(result['course_id'], result['course_title'],
-                            result['category'], result['description'], teacher)
+                            result['category'], result['description'], result['teacher_id'])
             contents = []
             cur.execute(
                 """SELECT * FROM content WHERE course_id = %s""", (course_id, ))
