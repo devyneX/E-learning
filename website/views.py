@@ -146,6 +146,11 @@ def course(course_id):
     # return render_template('course.html', user=current_user, course=course, rating=rating, rating_count=rating_count, study_materials=contents, assessments=assessments)
 
 
+@views.route('/course/<course_id>/enroll', methods=['POST'])
+def enroll(course_id):
+    return redirect(url_for('views.course', course_id=course_id))
+
+
 @views.route('/course/<course_id>/feedback')
 @login_required
 def feedback(course_id):

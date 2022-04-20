@@ -1,6 +1,4 @@
 swapno
-1. comments 
-2. account page
 3. search
 4. browse
 5. enrollment

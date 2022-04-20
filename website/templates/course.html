@@ -25,15 +25,26 @@
 
 
     {% if user.account_type == 'student' %}
-    <div class="course_button_container"><button class="open-button" type="button"><a
-                href="/course/{{ course.course_id }}/enroll"></a>Enroll</button>
+    <div class="course_button_container">
+        <button class="open-button" type="button" id="enroll_button">Enroll</button>
+        <script>
+            document.getElementById("enroll_button").onclick = function () {
+                    location.href = "{{ url_for('views.enroll', course_id = course.course_id) }}"
+            };
+        </script>
     </div>
 
-    <div class="course_button_container"><button class="open-button" type="button"><a
-                href="/course/{{ course.course_id }}/feedback"></a>Feedback</button>
+    <div class="course_button_container">
+        <button class="open-button" type="button" id="feedback_button">Feedback</button>
+        <script>
+            document.getElementById("feedback_button").onclick = function () {
+                location.href = "{{ url_for('views.feedback', course_id=course.course_id) }}";
+            };
+        </script>
     </div>
     {% endif %}
 
+    <h1>Contents</h1>
     {% for study_material in study_materials %}
     <!-- show the study materials  -->
     <div class="display_container">
@@ -73,6 +84,7 @@
     </div>
     {% endif %}
 
+    <h1>Assessments</h1>
     {% for assessment in assessments %}
     <!-- show the study materials  -->
     <div class="display_container">
@@ -96,7 +108,7 @@
                 <!-- <input type="hidden" name="add_assessment" value="form2"> -->
                 <label for="assessment_title"></label>
                 <input type="text" class="course_title" name="assessment_title" placeholder="Assessment Title" required>
-                <button class="course_submit" type="submit">Add</>
+                <button class="course_submit" type="submit">Add</h1>
                 <button type="button" class="course_close" onclick="closeForm('addAssessment')">Close</button>
             </form>
         </div>
