@@ -9,20 +9,26 @@
             <img src="https://i.pravatar.cc/75" />
         </div>
         <div class="information">
-            Name: {{ teacher.firstname}} {{ teacher.lastname }}<br>
-            Average Course Rating: {{ avg_rating }}<br>
-            Created {{ course_count }} Courses<br>
-            Joined on {{ teacher.join_date }}<br>
+            <h1>{{ teacher.firstname}} {{ teacher.lastname }}</h1>
+            <p>
+                Average Course Rating: {{ rating }}<br>
+                Created {{ course_count }} Courses<br>
+                Joined on {{ teacher.join_date }}
+            </p>
+            
         </div>
         <div class="profile_course_btn">
             <button class="open-button" onclick="openForm('createCourse')">Create Course</button>
         </div>
     </section>
-    <div class="right_side_card">
+    <div class="right_side_card_container">
         Created Courses
         {% for course in courses %}
-
-        <a href="/course/{{ course.course_id }}">{{ course.course_title }}</a>
+        <div class="right_side_card">
+            <h1><a href="/course/{{ course.course_id }}">{{ course.course_title }}</a></h1>
+            <p>{{ course.description }}</p>
+        </div>
+        <!-- <a href="/course/{{ course.course_id }}">{{ course.course_title }}</a> -->
 
         {% endfor %}
 

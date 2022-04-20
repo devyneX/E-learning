@@ -14,7 +14,9 @@
   font-family: 'Poppins', sans-serif;
 }
 .page_content { 
-  padding-top: 70px; 
+  background-color: whitesmoke;
+  padding-top: 70px;
+  min-height: 61vh; 
 }
 .wrapper{
   background: rgba(2, 48, 71, 1);
@@ -607,7 +609,7 @@ nav .content .links{
 .course_close, .course_submit{
   margin: 10px 10px 10px;
 }
-.login_btn, .signup_btn, .course_close, .course_submit{
+.login_btn, .signup_btn, .course_close, .course_submit {
   outline: none;
   border: none;
   cursor: pointer;
@@ -624,7 +626,7 @@ nav .content .links{
   -3px -3px 8px #fff;
 }
 
-.login_btn:hover, .signup_btn:hover{
+.login_btn:hover, .signup_btn:hover {
   background-color: #50e5b9;
 }
 .login_btn:active, .signup_btn:active{
@@ -657,7 +659,7 @@ nav .content .links{
   letter-spacing: 5px;
 }
 .course_content{
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  /* background: linear-gradient(135deg, #71b7e6, #9b59b6); */
 }
 .course_description{
   margin: auto 10%;
@@ -683,16 +685,18 @@ nav .content .links{
 
 }
 .course_display{
-  background-color: #f8f9f6;
-  padding-top: 4rem;
+  background-color: rgb(237, 230, 219);
+  padding-top: 1.5rem;
   flex-wrap: wrap;
-  height:10rem;
+  height:5rem;
   width:80rem;
-  margin:2rem 2rem;
+  margin:0.5rem .5rem;
   flex-direction: column;
   text-align: center;
   justify-content:center ;
-  border-radius: 1rem;
+  /* border-color: rgb(24, 45, 49);
+  border: 1px solid; */
+  border-radius: 1rem;  
   box-shadow: .3rem .3rem 0 .1rem rgba(0, 0, 0, 0.3),
               .5rem .5rem .5rem rgba(0, 0, 0, 0.3);
 }
@@ -702,7 +706,7 @@ nav .content .links{
   font-size: 45px; 
   font-weight: bold;
   line-height: 20px; 
-  text-align: center;
+  text-align: left;
   justify-content: center;
 }
 .course_button_container{
@@ -747,7 +751,7 @@ nav .content .links{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(105, 190, 233);
+  /* background-color: rgb(105, 190, 233); */
   width: 100%; min-height: 100vh;
 }
 .feedback_container{
@@ -870,7 +874,7 @@ textarea{
   display: flex;
   flex-wrap: wrap;
   flex: auto;
-  background-color: #02c8db;
+  /* background-color: #02c8db; */
 }
 .left_side_card{
   background-color: #3a5c5f;
@@ -881,21 +885,31 @@ textarea{
   border-radius: 10px;
 }
 .information{
-  background-color: gold;
+  /* background-color: gold; */
   display: flex;
   margin-left: 10px;
 }
-.right_side_card{
-  background-color: #4c4a37;
+.right_side_card_container{
+  /* background-color: #4c4a37; */
   margin: 10px 10px 10px;
 }
+
+.right_side_card{
+  background-color: #1f628d;
+  min-width: 100px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 10px 10px;
+}
+
 .css-after {
   position: center;
   margin-left: 50px;
 }
 .css-after img {
-  width: 75px;
-  height: 75px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   border: 2px solid #cddc39;
 }
@@ -921,7 +935,7 @@ textarea{
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  /* background: linear-gradient(135deg, #71b7e6, #9b59b6); */
 }
 .account_container{
   max-width: 700px;
@@ -1023,7 +1037,7 @@ form .account_user-details .account_input-box{
 /* Footer Style starts */
 .container{
   position: relative;
-  min-height: 100vh;
+  min-height: 10vh;
   
 }
 .row{
