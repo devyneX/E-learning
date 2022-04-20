@@ -1,8 +1,8 @@
 import MySQLdb
 from flask import Blueprint, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
-from datetime import date
-from .models import Course, Content, Assessment, Question, Student, Teacher
+from datetime import date, datetime
+from .models import Course, Content, Assessment, Question, Student, Teacher, Comment
 from . import mysql
 
 
@@ -254,6 +254,7 @@ def content(course_id, content_id):
         result = cur.fetchone()
         content = Content(result['content_id'], result['content_title'],
                           result['link'], result['course_id'], result['teacher_id'])
+        cur.close()
         if course is None:
             # no page
             pass
@@ -261,12 +262,48 @@ def content(course_id, content_id):
             # no page
             pass
         else:
-            # cur.execute("""SELECT * FROM comment""")
+            cur = mysql.connection.cursor()
+            cur.execute(
+                """SELECT * FROM comment WHERE content_id = %s ORDER BY post_time""", (content_id, ))
+            ls = cur.fetchall()
             comments = []
+            for cid, text, sid, tid, post_time in ls:
+                if sid is None:
+                    cur.execute(
+                        """SELECT username FROM authorization a WHERE a.account_id = (SELECT account_id FROM teacher WHERE teacher_id = %s)""", (tid, ))
+                    username = cur.fetchone()[0]
+                    print(username)
+                    comments.append(
+                        Comment(cid, text, username, 'Teacher', post_time))
+                elif tid is None:
+                    cur.execute(
+                        """SELECT username FROM authorization a WHERE a.account_id = (SELECT account_id FROM student WHERE studnet_id = %s)""", (sid, ))
+                    username = cur.fetchone()[0]
+                    comments.append(
+                        Comment(cid, text, username, 'Student', post_time))
             return render_template('content.html', user=current_user, course=course, study_material=content, comments=comments)
 
     if request.method == 'POST':
-        pass
+        text = request.form.get('comment')
+        cur = mysql.connection.cursor()
+        if current_user.account_type == 'student':
+            cur.execute("""SELECT student_id FROM student WHERE account_id = %s""",
+                        (current_user.account_id, ))
+        elif current_user.account_type == 'teacher':
+            cur.execute("""SELECT teacher_id FROM teacher WHERE account_id = %s""",
+                        (current_user.account_id, ))
+
+        user_id = cur.fetchone()[0]
+
+        if current_user.account_type == 'student':
+            cur.execute("""INSERT INTO comment (content_id, text, student_id, post_time) VALUES (%s, %s, %s, %s)""",
+                        (content_id, text, user_id, datetime.now()))
+        elif current_user.account_type == 'teacher':
+            cur.execute("""INSERT INTO comment (content_id, text, teacher_id, post_time) VALUES (%s, %s, %s, %s)""",
+                        (content_id, text, user_id, datetime.now()))
+
+        mysql.connection.commit()
+        return redirect(url_for('views.content', course_id=course_id, content_id=content_id))
 
 
 @views.route('course/<course_id>/assessment/<assessment_id>', methods=['GET', 'POST'])

@@ -69,8 +69,12 @@ class Question:
 
 
 class Comment:
-    def __init__(self):
-        pass
+    def __init__(self, content_id, text, posted_by, posted_account, post_time):
+        self.content_id = content_id
+        self.text = text
+        self.posted_by = posted_by
+        self.posted_account = posted_account
+        self.post_time = post_time
 
 
 class Feedback:
