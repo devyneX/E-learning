@@ -864,7 +864,161 @@ textarea{
   border: 1px solid black;
   color: white;
 }
+ /* profile design */
 
+.profile_container{
+  display: flex;
+  flex-wrap: wrap;
+  flex: auto;
+  background-color: #02c8db;
+}
+.left_side_card{
+  background-color: #3a5c5f;
+  margin: 10px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 10px;
+}
+.information{
+  background-color: gold;
+  display: flex;
+  margin-left: 10px;
+}
+.right_side_card{
+  background-color: #4c4a37;
+  margin: 10px 10px 10px;
+}
+.css-after {
+  position: center;
+  margin-left: 50px;
+}
+.css-after img {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: 2px solid #cddc39;
+}
+.css-after::after {
+  content: "";
+  width: 85px;
+  height: 91px;
+  border-radius: 50%;
+  background-color: #ff5722;
+  display: block;
+  position: absolute;
+  top: -6px;
+  left: -3px;
+  z-index: -1;
+}
+
+
+/* Account page design */
+
+.account_body{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+.account_container{
+  max-width: 700px;
+  width: 100%;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+.account_container .account_title{
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+}
+.account_container .account_title::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+.account_content form .account_user-details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+}
+form .account_user-details .account_input-box{
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+form .account_input-box span.account_details{
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.account_user-details .account_input-box input{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+.account_user-details .account_input-box input:focus,
+.account_user-details .account_input-box input:valid{
+  border-color: #9b59b6;
+}
+
+ form .account_button{
+   height: 45px;
+   margin: 35px 0
+ }
+ form .account_button input{
+   height: 100%;
+   width: 100%;
+   border-radius: 5px;
+   border: none;
+   color: #fff;
+   font-size: 18px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   background: linear-gradient(135deg, #71b7e6, #9b59b6);
+ }
+ form .account_button input:hover{
+  /* transform: scale(0.99); */
+  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+  }
+ @media(max-width: 584px){
+ .account_container{
+  max-width: 100%;
+}
+form .account_user-details .account_input-box{
+    margin-bottom: 15px;
+    width: 100%;
+  }
+}
+  .account_content form .account_user-details{
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .account_user-details::-webkit-scrollbar{
+    width: 5px;
+  }
+  @media(max-width: 459px){
+  .account_container .account_content{
+    flex-direction: column;
+  }
+}
 
 /* Footer Style starts */
 .container{

@@ -3,5 +3,43 @@
 {% block title %} {% endblock%}
 
 {% block content %}
+<div class="account_body">
+    <div class="account_container">
+        <div class="account_title">Account Settings</div>
+        <div class="account_content">
+            <form action="#">
+                <div class="account_user-details">
+                    <div class="account_input-box">
+                        <span class="account_details">Full Name</span>
+                        <input type="text" placeholder="Enter your name" required>
+                    </div>
+                    <div class="account_input-box">
+                        <span class="account_details">Username</span>
+                        <input type="text" placeholder="Enter your username" required>
+                    </div>
+                    <div class="account_input-box">
+                        <span class="account_details">Email</span>
+                        <input type="text" placeholder="Enter your email" required>
+                    </div>
+                    <div class="account_input-box">
+                        <span class="account_details">Old Password</span>
+                        <input type="password" placeholder="Enter your old password" required>
+                    </div>
+                    <div class="account_input-box">
+                        <span class="account_details">Password</span>
+                        <input type="text" placeholder="Enter your New password" required>
+                    </div>
+                    <div class="account_input-box">
+                        <span class="account_details">Confirm Password</span>
+                        <input type="text" placeholder="Confirm your New password" required>
+                    </div>
+                </div>
 
+                <div class="account_button">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock%}
