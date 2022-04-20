@@ -7,35 +7,35 @@
     <div class="account_container">
         <div class="account_title">Account Settings</div>
         <div class="account_content">
-            <form action="#">
+            <form action="{{ url_for('auth.update_account') }}" method="POST">
                 <div class="account_user-details">
                     <div class="account_input-box">
                         <span class="account_details">First Name</span>
-                        <input type="text" placeholder="Enter your name" required>
+                        <input type="text" name="firstname" placeholder="Last name" value="{{ firstname }}" disabled>
                     </div>
                     <div class="account_input-box">
                         <span class="account_details">Last Name</span>
-                        <input type="text" placeholder="Enter your name" required>
+                        <input type="text" name="lastname" placeholder="Last Name" value="{{ lastname }}" disabled>
                     </div>
                     <div class="account_input-box">
                         <span class="account_details">Username</span>
-                        <input type="text" placeholder="Enter your username" required>
+                        <input type="text" name="username" placeholder="Username" value="{{ user.username }}" required>
                     </div>
                     <div class="account_input-box">
                         <span class="account_details">Email</span>
-                        <input type="text" placeholder="Enter your email" required>
+                        <input type="text" name="email" placeholder="Email" value="{{ user.email }}" required>
                     </div>
                     <div class="account_input-box">
                         <span class="account_details">Old Password</span>
-                        <input type="password" placeholder="Enter your old password" required>
+                        <input type="password" name="old_password" placeholder="Old Password" required>
                     </div>
                     <div class="account_input-box">
-                        <span class="account_details">Password</span>
-                        <input type="text" placeholder="Enter your New password" required>
+                        <span class="account_details">New Password</span>
+                        <input type="text" name="new_password" placeholder="New Password">
                     </div>
                     <div class="account_input-box">
                         <span class="account_details">Confirm Password</span>
-                        <input type="text" placeholder="Confirm your New password" required>
+                        <input type="text" name="confirm_password" placeholder="Confirm New password">
                     </div>
                 </div>
 

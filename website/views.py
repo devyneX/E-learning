@@ -14,9 +14,18 @@ def home():
     return render_template('home.html', user=current_user)
 
 
-@views.route('/account')
+@views.route('/account', methods=['GET'])
 def account():
-    return render_template('account.html', user=current_user)
+    cur = mysql.connection.cursor()
+    if current_user.account_type == 'student':
+        cur.execute("""SELECT firstname, lastname FROM student WHERE account_id = %s""",
+                    (current_user.account_id, ))
+    elif current_user.account_type == 'teacher':
+        cur.execute("""SELECT firstname, lastname FROM teacher WHERE account_id = %s""",
+                    (current_user.account_id, ))
+    firstname, lastname = cur.fetchone()
+    cur.close()
+    return render_template('account.html', user=current_user, firstname=firstname, lastname=lastname)
 
 
 @views.route('/profile')
@@ -123,7 +132,7 @@ def course(course_id):
             for content in ls:
                 contents.append(Content(content['content_id'], content['content_title'],
                                 content['link'], content['course_id'], content['teacher_id']))
-            print(contents)
+            # print(contents)
             assessments = []
             cur.execute(
                 """SELECT * FROM assessment WHERE course_id = %s""", (course_id, ))
@@ -168,7 +177,7 @@ def add_content(course_id):
 def add_assessment(course_id):
     assessment_title = request.form.get('assessment_title')
     print(request.form.get('assessment_title'))
-    # return
+    return redirect(url_for('views.course', course_id=course_id))
 
     cur = mysql.connection.cursor()
     cur.execute("""SELECT teacher_id FROM teacher WHERE account_id = %s""",

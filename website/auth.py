@@ -103,6 +103,27 @@ def signup():
     return render_template('sign_up.html', user=current_user)
 
 
+@auth.route('/update_account', methods=['POST'])
+def update_account():
+    username = request.form.get('username')
+    email = request.form.get('email')
+    old_pass = request.form.get('old_password')
+    new_pass = request.form.get('new_password')
+    confirm_pass = request.form.get('confirm_password')
+
+    if check_password_hash(current_user.enc_password, old_pass):
+        cur = mysql.connection.cursor()
+        if username != current_user.username:
+            pass
+
+        if email != current_user.username:
+            pass
+
+        if new_pass is not None:
+            if new_pass == confirm_pass:
+                pass
+
+
 @auth.route('/logout')
 @login_required
 def logout():
