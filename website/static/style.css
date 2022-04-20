@@ -774,6 +774,16 @@ nav .content .links{
   text-align: center;
   background: rgb(242, 242, 242);
 }
+.feedback_body h1{
+  padding-top: 5vh;
+  color: #4abfc6; 
+  font-family: 'Trocchi', serif; 
+  font-size: 70px;
+  font-weight: normal;
+  line-height: 48px; 
+  margin: 0; 
+}
+
 .feedback_container{
   position: relative;
   margin: 300px 500px 500px;

@@ -3,15 +3,28 @@
 {% block title %} {% endblock%}
 
 {% block content %}
+<div class="profile_container">
+    <section class="left_side_card">
+        <div class="css-after">
+            <img src="https://i.pravatar.cc/75" />
+        </div>
+        <div class="information">
+            <h1>Name: {{ student.firstname}} {{ student.lastname }}</h1>>
+            <h3>Enrolled in {{ course_count }} Course</h3>
+            <h3>Attended {{ assessment_count }} Assessments</h3>
+            <h3>Joined on {{ student.join_date }}</h3>
+        </div>
+    </section>
+    <div class="right_side_card_container">
+        <div class="profile_heading">Enrolled Courses</div>
+        {% for course in courses %}
+        <div class="right_side_card">
+            <h1><a href="/course/{{ course.course_id }}">{{ course_title }}</a>
+        </div>
+        </h1>
 
-Name: {{ student.firstname}} {{ student.lastname }}<br>
-Enrolled in {{ course_count }} Course<br>
-Attended {{ assessment_count }} Assessments <br>
-Joined on {{ student.join_date }}<br>
-
-Enrolled Courses
-{% for course in courses %}
-<a href="/course/{{ course.course_id }}">{{ course_title }}</a><br>
-{% endfor %}
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock%}
