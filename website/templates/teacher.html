@@ -10,18 +10,15 @@
         </div>
         <div class="information">
             <h1>{{ teacher.firstname}} {{ teacher.lastname }}</h1>
-            <p>
-                Average Course Rating: {{ rating }}<br>
-                Created {{ course_count }} Courses<br>
-                Joined on {{ teacher.join_date }}
-            </p>
-            
-        </div>
-        <div class="profile_course_btn">
-            <button class="open-button" onclick="openForm('createCourse')">Create Course</button>
+            <h3>Average Course Rating: {{ rating }}</h3>
+            <h3>Created {{ course_count }} Courses
+            <h3>Joined on {{ teacher.join_date }}</h3>
         </div>
     </section>
     <div class="right_side_card_container">
+        <div class="profile_course_btn">
+            <button class="open-button" onclick="openForm('createCourse')">Create Course</button>
+        </div>
         Created Courses
         {% for course in courses %}
         <div class="right_side_card">

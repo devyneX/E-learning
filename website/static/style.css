@@ -658,9 +658,9 @@ nav .content .links{
   color: #7c795d;
   letter-spacing: 5px;
 }
-.course_content{
-  /* background: linear-gradient(135deg, #71b7e6, #9b59b6); */
-}
+/* .course_content{
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+} */
 .course_description{
   margin: auto 10%;
 }
@@ -879,16 +879,24 @@ textarea{
 .left_side_card{
   background-color: #3a5c5f;
   margin: 10px 10px 10px;
+  min-width: 35vh;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: flex-start;
   border-radius: 10px;
 }
 .information{
   /* background-color: gold; */
   display: flex;
+  flex-direction: column;
   margin-left: 10px;
 }
+
+.information h3{
+  color: white;
+}
+
 .right_side_card_container{
   /* background-color: #4c4a37; */
   margin: 10px 10px 10px;
@@ -896,7 +904,7 @@ textarea{
 
 .right_side_card{
   background-color: #1f628d;
-  min-width: 100px;
+  width: 140vh;
   min-height: 100px;
   display: flex;
   flex-direction: column;
@@ -905,7 +913,7 @@ textarea{
 
 .css-after {
   position: center;
-  margin-left: 50px;
+  /* margin-left: 50px; */
 }
 .css-after img {
   width: 100px;
