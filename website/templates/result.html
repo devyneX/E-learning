@@ -3,9 +3,17 @@
 {% block title %}Result{% endblock%}
 
 {% block content %}
-
-
-<h1>{{ marks }}</h1>
+<div class="result_body">
+    <div class="card-wrap">
+        <div class="card-header one">
+            <i class="fas fa-code"></i>
+        </div>
+        <div class="card-content">
+            <h1 class="card-title">{{ marks }}</h1>
+            <p class="card-text">Thanks For Participating the assessment. Hope you have a great day</p>
+        </div>
+    </div>
+</div>
 
 <!-- <form method="POST">
     {% for question in questions %}

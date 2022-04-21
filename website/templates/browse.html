@@ -4,16 +4,27 @@
 
 {% block content %}
 
-<h1>Search Results</h1> 
+    <h1 style="font-size: 50px; background-image: linear-gradient(45deg, #7175da, #9790F2); font-family:monospace;">
+        Search Results
+    </h1>
+
 
 {% for course in courses %}
-<div class="course_display">
-    <h2>{{ course.course_title}}</h2>
-    Instructor: {{ course.teacher }}
-    Category: {{ course.category }}
+<div class="browse_body">
+    <div class="browse_courses-container">
+        <div class="browse_course">
+            <div class="browse_course-preview">
+                <h6>Course</h6>
+                <h2>{{ course.course_title}}</h2>
+            </div>
+            <div class="browse_course-info">
+                <h6>Instructor: {{ course.teacher }}</h6>
+                <h2>Category: {{ course.category }}</h2>
+                <button class="browse_btn"><a href="/home">Continue</a></button>
+            </div>
+        </div>
+    </div>
 </div>
-
-
 {% endfor %}
 
 {% endblock%}
