@@ -1112,7 +1112,54 @@ form .account_user-details .account_input-box{
   }
 }
 
+/* Question_add form design */
 
+.question_add_body{
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: #efeeff
+}
+.question_add_account_container{
+  max-width: 700px;
+  width: 100%;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+.question_add_account_container .question_add_account_title{
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+}
+.question_add_account_container .question_add_account_title::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+.question_add_body input[type=text]{
+  width:100%;
+  border:2px solid #aaa;
+  border-radius:4px;
+  margin:8px 0;
+  outline:none;
+  padding:8px;
+  box-sizing:border-box;
+  transition:.3s;
+}
+
+.question_add_body input[type=text]:focus{
+  border-color:dodgerBlue;
+  box-shadow:0 0 8px 0 dodgerBlue;
+}
 
 /* assesment design */
 
@@ -1205,9 +1252,13 @@ form .account_user-details .account_input-box{
 	margin-top: 20px;
 }
 .assessment_btn,
+.assessment_submitBtn#submit{
+margin-left: 67vh;
+}
+.assessment_btn,
 .assessment_submitBtn{
 	padding: 14px 30px;
-	background-color: #0b03fc;
+	background-color: #9c9ae1;
 	color: #fff;
 	border: 0;
 	cursor: pointer;
@@ -1221,44 +1272,6 @@ form .account_user-details .account_input-box{
 .assessment_btn:hover,
 .assessment_submitBtn:hover {
     box-shadow: 0 14px 18px rgb(11, 3, 252, .28);
-}
-.assessment_question-bar.hidden{
-	display: none;
-}
-.assessment_scoreCount {
-    color: #000;
-    border-radius: 50%;
-    height: 100px;
-    width: 100px;
-    display: block;
-    vertical-align: middle;
-    line-height: 3.3;
-    font-size: 30px;
-    margin: 0 auto;
-    background: #FFBA00;
-    font-weight: bold;
-}
-.assessment_body div#showscore {
-    text-align: center;
-}
-.assessment_scoreBoard {
-    background: #fffbf1;
-    border-radius: 10px;
-    padding: 50px 20px;
-    max-width: 300px;
-    margin: 20px auto 50px;
-    border: 1px solid #ffe6a1;
-}
-.assessment_wrongAwnswer {
-    margin-top: 30px;
-    font-weight: bold;
-    font-size: 15px;
-    margin-bottom: 30px;
-}
-.assessment_body svg {
-    fill: #fff;
-    height: 9px;
-    margin-right: 6px;
 }
 
 
