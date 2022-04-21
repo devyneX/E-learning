@@ -44,6 +44,45 @@
     </div>
     {% endif %}
 
+    {% if user.account_type == 'teacher' %}
+    <div class="course_button_container">
+        <button class="open-button" onclick="openForm('addContent')">Add Content</button>
+    </div>
+
+    <div class="add_content_container">
+        <div class="form-popup" id="addContent">
+            <form action="{{ url_for('views.add_content', course_id=course.course_id) }}" method="POST">
+                <h1>Add Content</h1>
+                <label for="content_title"></label>
+                <input type="text" class="course_title" placeholder="Content Title" name="content_title" required><br>
+    
+                <label for="link"></label>
+                <input type="url" class="course_url" placeholder="Link" name="link" required><br>
+    
+                <button type="submit" class="course_submit">Add</button>
+                <button type="button" class="course_close" onclick="closeForm('addContent')">Close</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="course_button_container">
+        <button class="open-button" onclick="openForm('addAssessment')">Add Assessment</button>
+    </div>
+    
+    <div class="add_content_container">
+        <div class="form-popup" id="addAssessment">
+            <form action="{{ url_for('views.add_assessment', course_id=course.course_id) }}" method="POST">
+                <h2>Add Assessment</h2>
+                <label for="assessment_title"></label>
+                <input type="text" class="course_title" id="assessment_title_input" name="assessment_title"
+                    placeholder="Assessment Title" required>
+                <button class="course_submit" type="submit" id="add_assessment_submit">Add</button>
+                <button type="button" class="course_close" onclick="closeForm('addAssessment')">Close</button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
     <div class="course_heading">
         <h1>Contents</h1>
     </div>
@@ -61,30 +100,7 @@
     </div>
     {% endfor %}
 
-    {% if user.account_type == 'teacher' %}
-    <!-- show form to add content -->
-    <div class="course_button_container">
-        <button class="open-button" onclick="openForm('addContent')">Add Content</button>
-    </div>
-    <!-- form to add content -->
-    <div class="add_content_container">
-        <div class="form-popup" id="addContent">
-            <form action="{{ url_for('views.add_content', course_id=course.course_id) }}" method="POST">
-                <h1>Add Content</h1>
-
-                <!-- <input type="hidden" name="add_assessment" value="form1"> -->
-                <label for="content_title"></label>
-                <input type="text" class="course_title" placeholder="Content Title" name="content_title" required><br>
-
-                <label for="link"></label>
-                <input type="url" class="course_url" placeholder="Link" name="link" required><br>
-
-                <button type="submit" class="course_submit">Add</button>
-                <button type="button" class="course_close" onclick="closeForm('addContent')">Close</button>
-            </form>
-        </div>
-    </div>
-    {% endif %}
+    
 
     <div class="course_heading">
         <h1>Assessments</h1>
@@ -101,24 +117,7 @@
     </div>
     {% endfor %}
 
-    {% if user.account_type == 'teacher' %}
-    <div class="course_button_container">
-        <button class="open-button" onclick="openForm('addAssessment')">Add Assessment</button>
-    </div>
-
-    <div class="add_content_container">
-        <div class="form-popup" id="addAssessment">
-            <form action="{{ url_for('views.add_assessment', course_id=course.course_id) }}" method="'POST">
-                <h2>Add Assessment</h2>
-                <!-- <input type="hidden" name="add_assessment" value="form2"> -->
-                <label for="assessment_title"></label>
-                <input type="text" class="course_title" name="assessment_title" placeholder="Assessment Title" required>
-                <button class="course_submit" type="submit">Add</h1>
-                    <button type="button" class="course_close" onclick="closeForm('addAssessment')">Close</button>
-            </form>
-        </div>
-    </div>
-    {% endif %}
+    
 </div>
 
 {% endblock%}
