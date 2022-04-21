@@ -1112,6 +1112,156 @@ form .account_user-details .account_input-box{
   }
 }
 
+
+
+/* assesment design */
+
+.assessment_body{
+	margin: 0;
+	padding: 20px;
+	font-size: 14px;
+	font-family: Helvetica;
+	background: #efeeff;
+  
+}
+.assessment_score-color--white{
+	background: #fff;
+}
+.assessment_body h2{
+	font-size: 20px;
+	margin: 0;
+	padding-bottom: 30px;
+	color: #0b03fc;
+}
+.assessment_body h3 {
+    color: #0b03fc;
+    font-size: 25px;
+    padding-bottom: 20px;
+    margin: 0;
+}
+.assessment_quize{
+	max-width: 700px;
+	width: 100%;
+	margin: 50px auto;
+	padding: 50px;
+	background: #ffffff;
+	border-radius: 10px;
+}
+.assessment_body ul{
+	margin: 0;
+	list-style: none;
+	color: #7c79c7;
+	border: 1px solid #efeeff;
+	padding: 20px;
+	border-radius: 10px;
+	background: #fcfcff;
+}
+.assessment_body ul li+li{
+	margin-top: 16px;
+	border-top: 1px solid #efeeff;
+	padding-top: 16px;
+}
+.assessment_body ul li input[type="radio"] {
+    display: none;
+}
+.assessment_body ul li input[type="radio"]+label{
+    position:relative;
+    padding-left: 25px;
+}
+.assessment_body ul li input[type="radio"]+label::before{
+    content:"";
+    position: absolute;
+    left: 0;
+    background: #ffffff;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 1px;
+    border: 1px solid #7c79c7;
+} 
+.assessment_body ul li input[type="radio"]:checked+label::before {
+    content: "";
+    background: #0b03fc;
+    border-color: #0b03fc;
+}
+
+.assessment_body ul li input[type="radio"]:checked+label::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 6px;
+    height: 7px;
+    width: 7px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+
+.assessment_body label{
+	font-size: 15px;
+	cursor: pointer;
+}
+.assessment_footer-button{
+	margin-top: 20px;
+}
+.assessment_btn,
+.assessment_submitBtn{
+	padding: 14px 30px;
+	background-color: #0b03fc;
+	color: #fff;
+	border: 0;
+	cursor: pointer;
+	text-transform: uppercase;
+	font-size: 11px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	border-radius: 10px;
+	transition: all .3s ease-in-out;
+}
+.assessment_btn:hover,
+.assessment_submitBtn:hover {
+    box-shadow: 0 14px 18px rgb(11, 3, 252, .28);
+}
+.assessment_question-bar.hidden{
+	display: none;
+}
+.assessment_scoreCount {
+    color: #000;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    display: block;
+    vertical-align: middle;
+    line-height: 3.3;
+    font-size: 30px;
+    margin: 0 auto;
+    background: #FFBA00;
+    font-weight: bold;
+}
+.assessment_body div#showscore {
+    text-align: center;
+}
+.assessment_scoreBoard {
+    background: #fffbf1;
+    border-radius: 10px;
+    padding: 50px 20px;
+    max-width: 300px;
+    margin: 20px auto 50px;
+    border: 1px solid #ffe6a1;
+}
+.assessment_wrongAwnswer {
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+.assessment_body svg {
+    fill: #fff;
+    height: 9px;
+    margin-right: 6px;
+}
+
+
 /* Footer Style starts */
 .container{
   position: relative;
