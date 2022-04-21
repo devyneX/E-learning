@@ -11,6 +11,11 @@
         <div class="course_top_title">
             Category: {{ course.category }}
         </div>
+        <!-- TODO: please incorporate this into the design -->
+        <!-- <div class="course_top_title">
+            <h4> Rating: {{ rating }}</h4>
+            <h4>Rated by {{ rating_count }} students</h4>
+        </div> -->
 
     </section>
     <div class="course_description">
@@ -24,7 +29,7 @@
 
 
 
-    {% if user.account_type == 'student' %}
+    {% if user.account_type == 'student' and not enrolled %}
     <div class="course_button_container">
         <button class="open-button" type="button" id="enroll_button">Enroll</button>
         <script>
@@ -33,7 +38,9 @@
             };
         </script>
     </div>
+    {% endif %}
 
+    {% if user.account_type == 'student' and enrolled %}
     <div class="course_button_container">
         <button class="open-button" type="button" id="feedback_button">Feedback</button>
         <script>
@@ -44,7 +51,7 @@
     </div>
     {% endif %}
 
-    {% if user.account_type == 'teacher' %}
+    {% if user.account_type == 'teacher' and creator %}
     <div class="course_button_container">
         <button class="open-button" onclick="openForm('addContent')">Add Content</button>
     </div>

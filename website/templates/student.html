@@ -19,7 +19,7 @@
         <div class="profile_heading">Enrolled Courses</div>
         {% for course in courses %}
         <div class="right_side_card">
-            <h1><a href="/course/{{ course.course_id }}">{{ course_title }}</a>
+            <h1><a href="{{ url_for('views.course', course_id=course.course_id) }}">{{ course.course_title }}</a>
         </div>
         </h1>
 
