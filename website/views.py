@@ -2,6 +2,7 @@ import MySQLdb
 from flask import Blueprint, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
 from datetime import date, datetime
+import json
 from .models import Course, Content, Assessment, Question, Student, Teacher, Comment
 from . import mysql
 
@@ -174,12 +175,13 @@ def add_content(course_id):
     return redirect(url_for('views.content', course_id=course_id, content_id=content_id))
 
 
-@views.route('course/<course_id>/add_assessment', methods=['GET', 'POST'])
+@views.route('course/<course_id>/add_assessment', methods=['POST'])
 @login_required
 def add_assessment(course_id):
+    print(request.method)
     assessment_title = request.form.get('assessment_title')
-    print(request.form.get('assessment_title'))
-    return redirect(url_for('views.course', course_id=course_id))
+    # print(request.form.get('assessment_title'))
+    # return redirect(url_for('views.course', course_id=course_id))
 
     cur = mysql.connection.cursor()
     cur.execute("""SELECT teacher_id FROM teacher WHERE account_id = %s""",
