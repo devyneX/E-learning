@@ -776,7 +776,7 @@ nav .content .links{
 }
 .feedback_body h1{
   padding-top: 5vh;
-  color: #4abfc6; 
+  color: #ffffff; 
   font-family: 'Trocchi', serif; 
   font-size: 70px;
   font-weight: normal;
@@ -786,7 +786,7 @@ nav .content .links{
 
 .feedback_container{
   position: relative;
-  margin: 300px 500px 500px;
+  margin: 100px 500px 100px;
   width: 400px;
   background: rgb(110, 174, 210);
   padding: 20px 30px;
@@ -858,9 +858,9 @@ input#rate-5:checked ~ label{
 /* .feedback_container form{
   display: none;
 } */
-input:checked ~ form{
+/* input:checked ~ form{
   display: block;
-}
+} */
 form header{
   width: 100%;
   font-size: 25px;
@@ -875,7 +875,7 @@ form .feedback_textarea{
   width: 100%;
   overflow: hidden;
 }
-form .feedback_textarea textarea{
+form .feedback_textarea input{
   height: 100%;
   width: 100%;
   outline: none;
@@ -885,8 +885,9 @@ form .feedback_textarea textarea{
   padding: 10px;
   font-size: 17px;
   resize: none;
+  display: block;
 }
-.feedback_textarea textarea:focus{
+.feedback_textarea input:focus{
   border-color: #444;
 }
 form .feedback_btn{
@@ -1115,7 +1116,7 @@ form .account_user-details .account_input-box{
 /* Question_add form design */
 
 .question_add_body{
-  height: 60vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;

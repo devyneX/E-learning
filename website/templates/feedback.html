@@ -4,10 +4,10 @@
 
 {% block content %}
 <div class="feedback_body">
-    <center>
-        <h1>Feedback</h1>
-    </center>
     <div class="feedback_container">
+        <center>
+            <h1>Feedback</h1>
+        </center>
         <div class="feedback_post">
             <div class="feedback_text">Thanks for rating us!</div>
             <div class="feedback_edit">EDIT</div>
@@ -26,7 +26,7 @@
                 <label for="rate-1" class="fas fa-star"></label>
                 <header></header>
                 <div class="feedback_textarea">
-                    <textarea cols="30" placeholder="Describe your experience.."></textarea>
+                    <input type="text" name="review" placeholder="Describe your experience..">
                 </div>
                 <div class="feedback_btn">
                     <button type="submit">Post</button>
@@ -35,18 +35,4 @@
         </div>
     </div>
 </div>
-<!-- <script>
-    const btn = document.querySelector("button");
-    const post = document.querySelector(".feedback_post");
-    const widget = document.querySelector(".feedback_star-widget");
-    const editBtn = document.querySelector(".feedback_edit");
-    btn.onclick = () => {
-        widget.style.display = "none";
-        editBtn.onclick = () => {
-            widget.style.display = "block";
-            post.style.display = "none";
-        }
-        return false;
-    }
-</script> -->
 {% endblock%}

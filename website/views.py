@@ -212,10 +212,22 @@ def enroll(course_id):
 @login_required
 def feedback(course_id):
     if request.method == 'GET':
+        if current_user.account_type == 'teacher':
+            return redirect(url_for('views.course', course_id=course_id))
         return render_template('feedback.html', user=current_user)
     if request.method == 'POST':
-        print(request.form)
-        return redirect(url_for('views.feedback', course_id=course_id))
+        star = request.form.get('rate')
+        review = request.form.get('review')
+
+        cur = mysql.connection.cursor()
+        cur.execute("""SELECT student_id FROM student WHERE account_id = %s""",
+                    (current_user.account_id, ))
+        student_id = cur.fetchone()[0]
+        cur.execute("""INSERT INTO feedback (course_id, student_id, star, review) VALUES (%s, %s, %s, %s)""",
+                    (course_id, student_id, star, review))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('views.course', course_id=course_id))
 
 
 @views.route('/course/<course_id>/add_content', methods=['POST'])
