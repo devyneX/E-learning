@@ -4,30 +4,41 @@
 
 {% block content %}
 <div class="content_container">
-    <h1>{{ study_material.content_title }}</h1>
+    <div class="content_titles">
+        <h1>{{ study_material.content_title }}</h1>
+    </div>
 </div>
 
 <center>
-    
+
     <!-- <video controls loop preload="none" width="500px">
         <source src="{{ study_material.link }}" type="video/mp4">
         Video not available
     </video> -->
     <iframe src="{{ study_material.link }}" frameborder="10" width="80%" height="600px"></iframe>
 </center>
-
+<div class="content_titles"><h2>Comments</h2></div>
 {% for comment in comments %}
 
 
-{{ comment.posted_by }} ({{ comment.posted_account }}) <br>
-{{ comment.post_time}} <br>
-{{ comment.text }} <br>
+<div class="early_comment_wrapper">
+
+    <div class="early_comments">
+        <h2>{{ comment.posted_by }} ({{ comment.posted_account }})</h2> <br>
+        <div class="time">{{ comment.post_time}}</div><br>
+        {{ comment.text }}<br>
+    </div>
+</div>
+
 
 {% endfor %}
 
 <form method="POST">
-    <input type="text" name="comment" placeholder="Comment Here">
-    <button type="submit">Comment</button>
+    <div class="content_textarea_wrapper">
+
+        <input type="text" name="comment" placeholder="Please comment here">
+    </div>
+    <button type="submit" class="comment_button">Comment</button>
 </form>
 
 {% endblock%}
