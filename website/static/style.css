@@ -916,6 +916,7 @@ form .feedback_btn button:hover{
  .right_side_card_container .profile_heading{
   font-size: 50px;
   margin-left: 10px;
+  margin-top: 10px;
   font-weight: 500;
   position: relative;
 }
@@ -1131,8 +1132,8 @@ ul{
 }
 .form-popup {
   display: none;
-  margin-left: 5vw;
 }
+
 .footer-col{
    width: 25%;
    padding: 0 15px;

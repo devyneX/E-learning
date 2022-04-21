@@ -19,6 +19,23 @@
         <div class="profile_course_btn">
             <button class="open-button" onclick="openForm('createCourse')">Create Course</button>
         </div>
+        <div class="form-popup" id="createCourse">
+            <form class="" method="POST">
+                <h1>Create Course</h1>
+        
+                <label for="title"><b>Course Title</b></label>
+                <input type="text" class="course_title" placeholder="Course Title" name="course_title" required><br>
+        
+                <label for="category"><b>Category</b></label>
+                <input type="text" class="course_title" placeholder="Category" name="category" required><br>
+        
+                <label for="description"><b>Descriptioin</b></label>
+                <input type="text" class="course_title" placeholder="Description" name="description" required><br>
+        
+                <button type="submit" class="course_submit">Add</button>
+                <button type="button" class="course_close" onclick="closeForm('createCourse')">Close</button>
+            </form>
+        </div>
         <div class="profile_heading">Created Courses</div>
         {% for course in courses %}
         <div class="right_side_card">
@@ -28,26 +45,9 @@
         <!-- <a href="/course/{{ course.course_id }}">{{ course.course_title }}</a> -->
 
         {% endfor %}
-
     </div>
 </div>
-<div class="form-popup" id="createCourse">
-    <form class="" method="POST">
-        <h1>Create Course</h1>
 
-        <label for="title"><b>Course Title</b></label>
-        <input type="text" class="course_title" placeholder="Course Title" name="course_title" required><br>
-
-        <label for="category"><b>Category</b></label>
-        <input type="text" class="course_title" placeholder="Category" name="category" required><br>
-
-        <label for="description"><b>Descriptioin</b></label>
-        <input type="text" class="course_title" placeholder="Description" name="description" required><br>
-
-        <button type="submit" class="course_submit">Add</button>
-        <button type="button" class="course_close" onclick="closeForm('createCourse')">Close</button>
-    </form>
-</div>
 
 
 
