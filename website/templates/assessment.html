@@ -5,19 +5,43 @@
 {% block content %}
 
 <form method="POST">
-    {% for question in questions %}
+    <div class="assessment_body">
+        {% for question in questions %}
 
-    <label for="options{{ loop.index }}">{{ question.text }}</label>
-    <input type="radio" name="options{{ loop.index }}" value="1"> {{ question.option1 }}
-    <input type="radio" name="options{{ loop.index }}" value="2"> {{ question.option2 }}
-    <input type="radio" name="options{{ loop.index }}" value="3"> {{ question.option3 }}
-    <input type="radio" name="options{{ loop.index }}" value="4"> {{ question.option4 }} <br>
+        <div class="assessment_quize">
+            <div class="assessment_question-bar">
+                <h2 class="assessment_qestion"><label for="options{{ loop.index }}">{{ question.text }}</label></h2>
+                <ul>
+                    <li>
+                        <input type="radio" name="options{{ loop.index }}" value="1" id="a" class="assessment_ansList">
+                        <label for="options{{ loop.index }}" class="assessment_ansa">{{ question.option1 }}</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="options{{ loop.index }}" value="2" id="b" class="ansList">
+                        <label for="options{{ loop.index }}" class="assessment_ansb">{{ question.option2 }}</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="options{{ loop.index }}" value="3" id="c" class="ansList">
+                        <label for="options{{ loop.index }}" class="assessment_ansc">{{ question.option3 }}</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="options{{ loop.index }}" value="4" id="d" class="ansList">
+                        <label for="options{{ loop.index }}" class="assessment_ansd">{{ question.option4 }}</label>
+                    </li>
 
+                </ul>
 
-    {% endfor %}
-    <button>submit</button>
+            </div>
+            <div id="showscore" class="assessment_scoreArea"></div>
+        </div>
+
+        {% endfor %}
+        <div class="assessment_footer-button">
+            <button id="submit" class="assessment_submitBtn">Submit</button>
+        </div>
+    </div>
+    <!-- <button>submit</button> -->
 
 </form>
 
 {% endblock%}
-
