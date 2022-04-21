@@ -819,7 +819,7 @@ nav .content .links{
 .feedback_container .feedback_edit:hover{
   text-decoration: underline;
 }
-.feedback_container .feedback_star-widget input{
+.feedback_star-widget input{
   display: none;
 }
 .feedback_star-widget label{
@@ -855,9 +855,9 @@ input#rate-5:checked ~ label{
 #rate-5:checked ~ form header:before{
   content: "I just love it ";
 }
-.feedback_container form{
+/* .feedback_container form{
   display: none;
-}
+} */
 input:checked ~ form{
   display: block;
 }

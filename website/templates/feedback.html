@@ -13,17 +13,17 @@
             <div class="feedback_edit">EDIT</div>
         </div>
         <div class="feedback_star-widget">
-            <input type="radio" name="rate" id="rate-5">
-            <label for="rate-5" class="fas fa-star"></label>
-            <input type="radio" name="rate" id="rate-4">
-            <label for="rate-4" class="fas fa-star"></label>
-            <input type="radio" name="rate" id="rate-3">
-            <label for="rate-3" class="fas fa-star"></label>
-            <input type="radio" name="rate" id="rate-2">
-            <label for="rate-2" class="fas fa-star"></label>
-            <input type="radio" name="rate" id="rate-1">
-            <label for="rate-1" class="fas fa-star"></label>
-            <form action="#">
+            <form action="#" method="POST">
+                <input type="radio" name="rate" value="5"  id="rate-5">
+                <label for="rate-5" class="fas fa-star"></label>
+                <input type="radio" name="rate" value="4" id="rate-4">
+                <label for="rate-4" class="fas fa-star"></label>
+                <input type="radio" name="rate" value="3" id="rate-3">
+                <label for="rate-3" class="fas fa-star"></label>
+                <input type="radio" name="rate" value="2" id="rate-2">
+                <label for="rate-2" class="fas fa-star"></label>
+                <input type="radio" name="rate" value="1" id="rate-1">
+                <label for="rate-1" class="fas fa-star"></label>
                 <header></header>
                 <div class="feedback_textarea">
                     <textarea cols="30" placeholder="Describe your experience.."></textarea>
@@ -35,19 +35,18 @@
         </div>
     </div>
 </div>
-<script>
+<!-- <script>
     const btn = document.querySelector("button");
     const post = document.querySelector(".feedback_post");
     const widget = document.querySelector(".feedback_star-widget");
     const editBtn = document.querySelector(".feedback_edit");
     btn.onclick = () => {
         widget.style.display = "none";
-        post.style.display = "block";
         editBtn.onclick = () => {
             widget.style.display = "block";
             post.style.display = "none";
         }
         return false;
     }
-</script>
+</script> -->
 {% endblock%}

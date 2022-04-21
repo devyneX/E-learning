@@ -14,6 +14,28 @@ def home():
     return render_template('home.html', user=current_user)
 
 
+@views.route('/search', methods=['POST'])
+def search():
+    search_term = request.form.get('search_term')
+    return redirect(url_for('views.browse_search', search_term=search_term))
+
+
+def browse_search(search_term):
+    cur = mysql.connection.cursor()
+    cur.execute(
+        """SELECT * FROM course WHERE course_title like %'%s'%""", (search_term, ))
+    ls = cur.fetchall()
+    courses = []
+    for course in ls:
+        courses.append(Course(course['course_id'], course['course_title'],
+                              course['category'], course['description'], course['teacher_id']))
+    return render_template('browse.html', courses=courses)
+
+
+def browse_categories():
+    pass
+
+
 @views.route('/account', methods=['GET'])
 def account():
     cur = mysql.connection.cursor()
@@ -106,7 +128,7 @@ def teacher():
             cur.execute("""INSERT INTO course (course_title, category, description, teacher_id, created_on) VALUES (%s, %s, %s, %s, %s)""",
                         (course_title, category, description, teacher_id, date.today()))
             mysql.connection.commit()
-            cur.execute("""SELECT course_id FROM course WHERE course_title = %s and category = %s and description = %s and teacher_id = %s""",
+            cur.execute("""SELECT course_id FROM course WHERE course_title = %s AND category = %s AND description = %s AND teacher_id = %s ORDER BY course_id DESC""",
                         (course_title, category, description, teacher_id))
             course_id = cur.fetchone()[0]
             cur.close()
@@ -218,7 +240,7 @@ def add_content(course_id):
     cur.execute(
         """INSERT INTO content (content_title, link, course_id, teacher_id) VALUES (%s, %s, %s, %s)""", (content_title, link, course_id, teacher))
     mysql.connection.commit()
-    cur.execute("""SELECT content_id FROM content WHERE content_title = %s and link = %s and course_id = %s and teacher_id = %s""",
+    cur.execute("""SELECT content_id FROM content WHERE content_title = %s and link = %s and course_id = %s and teacher_id = %s ORDER BY content_id DESC""",
                 (content_title, link, course_id, teacher))
     content_id = cur.fetchone()[0]
     cur.close()
