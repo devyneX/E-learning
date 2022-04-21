@@ -18,7 +18,9 @@
 
 {% for comment in comments %}
 
+
 {{ comment.posted_by }} ({{ comment.posted_account }}) <br>
+{{ comment.post_time}} <br>
 {{ comment.text }} <br>
 
 {% endfor %}
