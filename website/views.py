@@ -20,20 +20,34 @@ def search():
     return redirect(url_for('views.browse_search', search_term=search_term))
 
 
+@views.route('/search/<search_term>')
 def browse_search(search_term):
-    cur = mysql.connection.cursor()
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cur.execute(
-        """SELECT * FROM course WHERE course_title like %'%s'%""", (search_term, ))
+        """SELECT * FROM course WHERE course_title like %s""", (f'%{search_term}%', ))
     ls = cur.fetchall()
     courses = []
     for course in ls:
         courses.append(Course(course['course_id'], course['course_title'],
                               course['category'], course['description'], course['teacher_id']))
-    return render_template('browse.html', courses=courses)
+        cur.execute(
+            """SELECT firstname, lastname FROM teacher WHERE teacher_id = %s""", (course['teacher_id'], ))
+        result = cur.fetchone()
+        courses[-1].teacher = result['firstname'] + ' ' + result['lastname']
+    return render_template('browse.html', user=current_user, title=search_term, courses=courses)
 
 
-def browse_categories():
-    pass
+@views.route('/category/<category>')
+def browse_categories(category):
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute(
+        """SELECT * FROM course WHERE category = %s""", (category, ))
+    ls = cur.fetchall()
+    courses = []
+    for course in ls:
+        courses.append(Course(course['course_id'], course['course_title'],
+                              course['category'], course['description'], course['teacher_id']))
+    return render_template('browse.html', user=current_user, title=category, courses=courses)
 
 
 @views.route('/account', methods=['GET'])

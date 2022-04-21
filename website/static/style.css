@@ -699,8 +699,10 @@ nav .content .links{
   border-radius: 1rem;  
   box-shadow: .3rem .3rem 0 .1rem rgba(0, 0, 0, 0.3),
               .5rem .5rem .5rem rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 .course_display_iner{
+  color: mediumpurple;
   padding: .1em 1em;
   text-decoration: none;
   font-size: 45px; 
@@ -747,6 +749,7 @@ nav .content .links{
 }
 
 .course_heading h1{
+  padding-top: 5%;
   font-size: 50px;
   margin-left: 180px;
   font-weight: 500;
@@ -977,6 +980,7 @@ form .feedback_btn button:hover{
   margin: 10px 10px 10px;
   border-radius: 10px;
   box-shadow: 5px 3px 7px 4px rgba(56,13,40,0.44);
+  cursor: pointer;
 }
 .right_side_card h1, .right_side_card p{
   margin-left: 20px;

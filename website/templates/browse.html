@@ -1,16 +1,18 @@
 {% extends 'base.html'%}
 
-{% block title %} {% endblock%}
+{% block title %}{{ title }}{% endblock%}
 
 {% block content %}
 
-Searched Results 
+<h1>Search Results</h1> 
 
 {% for course in courses %}
-{{ course.title}}
-{{ course.teacher }}
-{{ course.category }}
-{{ course.description }}
+<div class="course_display">
+    <h2>{{ course.course_title}}</h2>
+    Instructor: {{ course.teacher }}
+    Category: {{ course.category }}
+</div>
+
 
 {% endfor %}
 

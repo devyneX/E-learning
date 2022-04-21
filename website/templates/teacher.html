@@ -12,7 +12,7 @@
             <h1>{{ teacher.firstname}} {{ teacher.lastname }}</h1>
             <h3>Average Course Rating: {{ rating }}</h3>
             <h3>Created {{ course_count }} Courses
-                <h3>Joined on {{ teacher.join_date }}</h3>
+            <h3>Joined on {{ teacher.join_date }}</h3>
         </div>
     </section>
     <div class="right_side_card_container">
@@ -44,10 +44,15 @@
         </div>
         <div class="profile_heading">Created Courses</div>
         {% for course in courses %}
-        <div class="right_side_card">
-            <h1><a href="{{ url_for('views.course', course_id=course.course_id) }}">{{ course.course_title }}</a></h1>
-            <p>{{ course.description }}</p>
+        <div class="right_side_card" id="courseBox{{ loop.index }}">
+            <h1>{{ course.course_title }}</h1>
+            <p>{{ course.category }}</p>
         </div>
+        <script>
+            document.getElementById('courseBox{{ loop.index }}').onclick = function () {
+                    location.href = "{{ url_for('views.course', course_id=course.course_id) }}"
+            }
+        </script>
         <!-- <a href="/course/{{ course.course_id }}">{{ course.course_title }}</a> -->
 
         {% endfor %}
