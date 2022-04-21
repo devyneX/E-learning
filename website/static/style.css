@@ -1106,6 +1106,74 @@ form .feedback_btn button:hover{
   z-index: -1;
 }
 
+/* course display  design*/
+.browse_body {
+	background-image: linear-gradient(45deg, #7175da, #9790F2);
+	font-family: 'Muli', sans-serif;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	min-height: 100vh;
+	margin: 0;
+}
+
+.browse_courses-container{
+  align-self: baseline;
+  margin-bottom: 100vh;
+
+}
+
+.browse_course {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	display: flex;
+	max-width: 100%;
+	margin: 20px;
+	overflow: hidden;
+	width: 700px;
+}
+
+.browse_course h6 {
+	opacity: 0.6;
+	margin: 0;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.browse_course h2 {
+	letter-spacing: 1px;
+	margin: 10px 0;
+}
+
+.browse_course-preview {
+	background-color: #2A265F;
+	color: #fff;
+	padding: 30px;
+	max-width: 250px;
+}
+
+
+
+.browse_course-info {
+	padding: 30px;
+	position: relative;
+	width: 100%;
+}
+.browse_btn {
+	background-color: #709dc6;
+	border: 0;
+	border-radius: 50px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	color: #fff;
+	font-size: 16px;
+	padding: 12px 25px;
+	position: absolute;
+	bottom: 30px;
+	right: 30px;
+	letter-spacing: 1px;
+}
 
 /* Account page design */
 
@@ -1213,7 +1281,93 @@ form .account_user-details .account_input-box{
     flex-direction: column;
   }
 }
+/* result page design */
 
+
+:root {
+  --color-text: #616161;
+  --color-text-btn: #ffffff;
+  --card1-gradient-color1: #f12711;
+  --card1-gradient-color2: #f5af19;
+  --card2-gradient-color1: #7F00FF;
+  --card2-gradient-color2: #E100FF;
+  --card3-gradient-color1: #3f2b96;
+  --card3-gradient-color2: #a8c0ff;
+  --card4-gradient-color1: #11998e;
+  --card4-gradient-color2: #38ef7d;
+}
+
+.result_body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to right, #8e9eab, #eef2f3);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.card-wrap {
+  width: 500px;
+  height: 500px;
+  background: #fff;
+  border-radius: 20px;
+  border: 5px solid #fff;
+  overflow: hidden;
+  color: var(--color-text);
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+      rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+
+.card-wrap:hover {
+  transform: scale(1.1);
+}
+
+.card-header {
+  height: 200px;
+  width: 100%;
+  background: red;
+  border-radius: 100% 0% 100% 0% / 0% 50% 50% 100%;
+  display: grid;
+  place-items: center;
+
+}
+
+.card-header i {
+  color: #fff;
+  font-size: 72px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.card-title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 80px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+}
+
+.card-text {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.card-header.one {
+  background: linear-gradient(to bottom left, var(--card1-gradient-color1), var(--card1-gradient-color2));
+
+}
 /* Question_add form design */
 
 .question_add_body{
