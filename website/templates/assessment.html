@@ -13,19 +13,23 @@
                 <h2 class="assessment_qestion"><label for="options{{ loop.index }}">{{ question.text }}</label></h2>
                 <ul>
                     <li>
-                        <input type="radio" name="options{{ loop.index }}" value="1" id="a{{ loop.index }}" class="assessment_ansList">
+                        <input type="radio" name="options{{ loop.index }}" value="1" id="a{{ loop.index }}"
+                            class="assessment_ansList">
                         <label for="a{{ loop.index }}" class="assessment_ansa">{{ question.option1 }}</label>
                     </li>
                     <li>
-                        <input type="radio" name="options{{ loop.index }}" value="2" id="b{{ loop.index }}" class="ansList">
+                        <input type="radio" name="options{{ loop.index }}" value="2" id="b{{ loop.index }}"
+                            class="ansList">
                         <label for="b{{ loop.index }}" class="assessment_ansb">{{ question.option2 }}</label>
                     </li>
                     <li>
-                        <input type="radio" name="options{{ loop.index }}" value="3" id="c{{ loop.index }}" class="ansList">
+                        <input type="radio" name="options{{ loop.index }}" value="3" id="c{{ loop.index }}"
+                            class="ansList">
                         <label for="c{{ loop.index }}" class="assessment_ansc">{{ question.option3 }}</label>
                     </li>
                     <li>
-                        <input type="radio" name="options{{ loop.index }}" value="4" id="d{{ loop.index }}" class="ansList">
+                        <input type="radio" name="options{{ loop.index }}" value="4" id="d{{ loop.index }}"
+                            class="ansList">
                         <label for="d{{ loop.index }}" class="assessment_ansd">{{ question.option4 }}</label>
                     </li>
 
