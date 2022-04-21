@@ -1505,16 +1505,19 @@ form .account_user-details .account_input-box{
 	cursor: pointer;
 }
 .assessment_footer-button{
-	margin-top: 20px;
+	/* margin-top: 20px; */
+  display: flex;
+  justify-content: center;
 }
 .assessment_btn,
 .assessment_submitBtn#submit{
-margin-left: 67vh;
+/* margin-left: 67vh; */
+margin: 0 auto;
 }
 .assessment_btn,
 .assessment_submitBtn{
 	padding: 14px 30px;
-	background-color: #9c9ae1;
+	background-color: #434179;
 	color: #fff;
 	border: 0;
 	cursor: pointer;
