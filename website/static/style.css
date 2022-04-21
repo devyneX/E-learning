@@ -1202,7 +1202,7 @@ form .account_user-details .account_input-box{
   }
 }
   .account_content form .account_user-details{
-    max-height: 300px;
+    max-height: 400px;
     overflow-y: scroll;
   }
   .account_user-details::-webkit-scrollbar{
