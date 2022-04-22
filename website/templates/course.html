@@ -90,45 +90,51 @@
     </div>
     {% endif %}
 
-    <div class="course_heading">
-        <h1>Contents</h1>
-    </div>
-    {% for study_material in study_materials %}
-    <!-- show the study materials  -->
-    <div class="display_container">
-        <div class="course_display" id="contentBox{{ loop.index }}">
-            <div class="course_display_iner">
-                <h3>{{ study_material.content_title }}</h3>
-            </div>
+    
+    <div class="course_outter_div">
+        <div class="course_heading">
+            <h1>Contents</h1>
         </div>
-        <script>
-            document.getElementById('contentBox{{ loop.index }}').onclick = function() {
-                location.href = "{{ url_for('views.content', course_id=course.course_id, content_id=study_material.content_id) }}"
-            }
-        </script>
+        {% for study_material in study_materials %}
+        <!-- show the study materials  -->
+        <div class="display_container">
+            <div class="course_display" id="contentBox{{ loop.index }}">
+                <div class="course_display_iner">
+                    <h4>{{ study_material.content_title }}</h4>
+                </div>
+            </div>
+            <script>
+                document.getElementById('contentBox{{ loop.index }}').onclick = function () {
+                    location.href = "{{ url_for('views.content', course_id=course.course_id, content_id=study_material.content_id) }}"
+                }
+            </script>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 
     
 
-    <div class="course_heading">
-        <h1>Assessments</h1>
-    </div>
-    {% for assessment in assessments %}
-    <!-- show the study materials  -->
-    <div class="display_container">
-        <div class="course_display" id="assessmentBox{{ loop.index }}">
-            <div class="course_display_iner">
-                <h3>{{ assessment.assessment_title }}</h3>
-            </div>
+    
+    <div class="course_outter_div">
+        <div class="course_heading">
+            <h1>Assessments</h1>
         </div>
-        <script>
-            document.getElementById('assessmentBox{{ loop.index }}').onclick = function () {
-                location.href = "{{ url_for('views.assessment', course_id=course.course_id, assessment_id=assessment.assessment_id) }}"
-            }
-        </script>
+        {% for assessment in assessments %}
+        <!-- show the study materials  -->
+        <div class="display_container">
+            <div class="course_display" id="assessmentBox{{ loop.index }}">
+                <div class="course_display_iner">
+                    <h4>{{ assessment.assessment_title }}</h4>
+                </div>
+            </div>
+            <script>
+                document.getElementById('assessmentBox{{ loop.index }}').onclick = function () {
+                    location.href = "{{ url_for('views.assessment', course_id=course.course_id, assessment_id=assessment.assessment_id) }}"
+                }
+            </script>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 
     
 </div>
