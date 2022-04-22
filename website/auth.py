@@ -41,7 +41,11 @@ def login():
             # if the user does not exist, redirect to sign up page
             return redirect(url_for('auth.signup'))
 
-    return render_template('login.html', user=current_user)
+    if request.method == 'GET':
+        if current_user is None:
+            return render_template('login.html', user=current_user)
+        else:
+            return redirect(url_for('views.profile'))
 
 
 @auth.route('/signup', methods=['GET', 'POST'])

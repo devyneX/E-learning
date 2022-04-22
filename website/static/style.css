@@ -17,6 +17,7 @@
   background: linear-gradient(to right, #8e9eab, #eef2f3);
   padding-top: 70px;
   min-height: 61vh; 
+  overflow: auto;
 }
 .wrapper{
   background: rgba(2, 48, 71, 1);
@@ -648,15 +649,15 @@ nav .content .links{
   margin: 0px 60px;
   border-bottom-right-radius: 25px;
   border-bottom-left-radius: 25px;
-  height: 30vh;
+  min-height: 30vh;
   width: 92%;
-  overflow: hidden;
+  overflow:visible;
   font-family: "serif";
   /* font-weight: 700; */
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   color: #555;
   /* color: rgb(28, 35, 50); */
   background-color: rgb(3, 78, 90);
@@ -664,7 +665,7 @@ nav .content .links{
 }
 .course_top_title{
   margin: 15px auto;
-  font-size: 50px;
+  font-size: 30px;
   font-family: "serif" !important;
   font-weight: bold;
   /* color: #7c795d; */
@@ -733,6 +734,7 @@ nav .content .links{
 .course_display_iner{
   /* color: mediumpurple; */
   color: #2A265F;
+  /* color: #091924; */
   padding: .1em 1em;
   text-decoration: none;
   font-size: 45px; 
@@ -951,10 +953,6 @@ form .feedback_btn button:hover{
 
 /* content comments */
 
-.content_container .content_titles h1{
-  border-bottom: 5px solid #a252d1;
-}
-
 .content_textarea_wrapper{
   display: flex;
   flex-direction: column;
@@ -1010,7 +1008,9 @@ form .feedback_btn button:hover{
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  /* padding: 10px auto; */
   margin: 10px auto;
+  overflow: auto;
   /* align-items: center; */
   /* margin-left: 50px;
   margin-bottom: 5px;
@@ -1029,12 +1029,14 @@ form .feedback_btn button:hover{
   flex-direction: column;
   flex-wrap: wrap;
   font-size: large;
+  margin-top: 10px;
+  margin-bottom: 10px;
   margin-left: 20px;
   margin-right: 20px;
 }
 
 .early_comments h2{
-  color: #186b71;
+  color: #1f1c4e;
 }
 
 .early_comments p{
@@ -1073,6 +1075,7 @@ form .feedback_btn button:hover{
 .content_titles{
   font-size: 30px;
   padding-bottom: 25px;
+  color: #091924;
 }
 .time{
   margin-bottom: 5px;
@@ -1102,12 +1105,13 @@ form .feedback_btn button:hover{
   display: flex;
   flex-wrap: wrap;
   flex: auto;
-  /* background-color: #02c8db; */
 }
 .left_side_card{
   background-color: #186b71;
   margin: 10px 10px 10px;
-  min-width: 35vh;
+  min-width: 45vh;
+  max-height: 100vh;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1119,16 +1123,22 @@ form .feedback_btn button:hover{
   /* background-color: gold; */
   display: flex;
   flex-direction: column;
+  margin-top: 30px;
   margin-left: 10px;
+  justify-content: space-evenly;
 }
 
 .information h3{
   color: white;
-  padding: 20px 20px 20px;
+  /* padding: 10px 20px 20px; */
+  padding: 5px;
+  align-self: flex-start;
+  /* margin: auto; */
 }
 .information h1{
   font-size: 30px;
-  margin-left: 15px;
+  padding-bottom: 30px;
+  margin: 10px auto;
 }
 .right_side_card_container{
   /* background-color: #4c4a37; */

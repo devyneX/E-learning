@@ -6,12 +6,12 @@
 <div class="profile_container">
     <section class="left_side_card">
         <div class="css-after">
-            <img src="https://i.pravatar.cc/75" />
+            <img src="{{ url_for('static', filename='teacher_dp.png') }}" />
         </div>
         <div class="information">
             <h1>{{ teacher.firstname}} {{ teacher.lastname }}</h1>
             <h3>Average Course Rating: {{ rating }}</h3>
-            <h3>Created {{ course_count }} Courses
+            <h3>Created {{ course_count }} Courses</h3>
             <h3>Joined on {{ teacher.join_date }}</h3>
         </div>
     </section>
