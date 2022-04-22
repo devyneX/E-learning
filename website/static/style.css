@@ -19,6 +19,25 @@
   min-height: 61vh; 
   overflow: auto;
 }
+.alert{
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #752f2f;
+  color: whitesmoke;
+}
+.alertclosebtn{
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.alertclosebtn:hover {
+  color: black;
+}
 .wrapper{
   background: rgba(2, 48, 71, 1);
   background-color: rgba(2, 48, 71, 1);
@@ -539,8 +558,8 @@ nav .content .links{
 /* Login and signup starts here */
 .login, .signup, .form-popup{  
   margin: 0;
-  height: 100vh;
-  width: 100vw;
+  height: 120vh;
+  width: 95vw;
   overflow: hidden;
   font-family: "Lato", sans-serif;
   font-weight: 700;
@@ -559,12 +578,15 @@ nav .content .links{
 .login_form, .signup_form, .form-popup{
   width: 430px;
   height: 700px;
-  padding: 60px 35px 35px 35px;
+  padding: 60px 35px 700px 35px;
   border-radius: 40px;
   background-color: #ecf0f3;
   box-shadow: 13px 13px 20px #cbced1,
   -13px -13px 20px #fff;
 
+}
+.login_form, #addAssessment, #addContent{
+  padding-bottom: 35px;
 }
 .login-signup-as{
   /* padding: 5px auto; */
@@ -590,9 +612,12 @@ nav .content .links{
   font-size: 28px;
   letter-spacing: 0.5px;
 }
+.login-title{
+  padding: 100px
+}
 .login_content{
   width: 100%;
-  padding: 75px 5px 5px 5px;
+  padding: 25px 5px 25px 5px;
 }
 .signup_content{
   width: 100%;

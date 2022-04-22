@@ -32,20 +32,20 @@ def login():
             # checking password
             if check_password_hash(user.enc_password, password):
                 login_user(user, remember=True)
-                return redirect(url_for('views.home'))
+                return redirect(url_for('views.profile'))
             else:
                 # incorrect password
-                # flash message
-                pass
+                flash('Incorrect Password', 'error')
+                return render_template('login.html', user=current_user)
         else:
             # if the user does not exist, redirect to sign up page
             return redirect(url_for('auth.signup'))
 
     if request.method == 'GET':
-        if current_user is None:
-            return render_template('login.html', user=current_user)
-        else:
+        if current_user.is_authenticated:
             return redirect(url_for('views.profile'))
+        else:
+            return render_template('login.html', user=current_user)
 
 
 @auth.route('/signup', methods=['GET', 'POST'])
@@ -71,15 +71,23 @@ def signup():
         # checking if the username and email are unique
         if len(result) > 0:
             # flash
-            pass
+            flash('Username/Email already exists', 'error')
+            return render_template('sign_up.html', user=current_user)
         # checking if valid names were inputted
         elif len(firstname) < 2 or len(lastname) < 2:
             # flash
-            pass
-        # checking if the two passwords match
-        elif password1 == password2 and len(password1) < 2:
+            flash('Input a valid first name and last name', 'error')
+            return render_template('sign_up.html', user=current_user)
+        # checking length of the password
+        elif len(password1) < 2:
             # flash
-            pass
+            flash('Password too small', 'error')
+            return render_template('sign_up.html', user=current_user)
+        # checking if the two passwords match
+        elif password1 != password2:
+            flash("Passwords don't match", 'error')
+            return render_template('sign_up.html', user=current_user)
+
         else:
             # add user to the data base
             enc_password = generate_password_hash(password1)
@@ -89,7 +97,7 @@ def signup():
             mysql.connection.commit()
 
             cur.execute(
-                """SELECT account_id FROM authorization WHERE username = %s AND account_type = %s""", (username, acc_type))
+                """SELECT account_id FROM authorization WHERE username = %s AND account_type = %s ORDER BY account_id DESC""", (username, acc_type))
             account_id = cur.fetchone()[0]
 
             if acc_type == 'student':
@@ -103,11 +111,17 @@ def signup():
             user = User(
                 account_id, 'student', email, username, enc_password)
             login_user(user, remember=True)
-            return redirect(url_for('views.home'))
-    return render_template('sign_up.html', user=current_user)
+            return redirect(url_for('views.profile'))
+
+    if request.method == 'GET':
+        if current_user.is_authenticated:
+            return redirect('views.profile')
+        else:
+            return render_template('sign_up.html', user=current_user)
 
 
 @auth.route('/update_account', methods=['POST'])
+@login_required
 def update_account():
     username = request.form.get('username')
     email = request.form.get('email')
@@ -118,14 +132,24 @@ def update_account():
     if check_password_hash(current_user.enc_password, old_pass):
         cur = mysql.connection.cursor()
         if username != current_user.username:
-            pass
-
+            cur.execute("""UPDATE authorization SET username = %s WHERE account_id = %s""",
+                        (username, current_user.account_id))
+            mysql.connection.commit()
+            current_user.username = username
         if email != current_user.username:
-            pass
+            cur.execute("""UPDATE authorization SET email = %s WHERE account_id = %s""",
+                        (email, current_user.account_id))
+            mysql.connection.commit()
+            current_user.email = email
 
         if new_pass is not None:
             if new_pass == confirm_pass:
-                pass
+                cur.execute("""UPDATE authorization SET encrypted_password = %s WHERE account_id = %s""",
+                            (generate_password_hash(new_pass), current_user.account_id))
+                mysql.connection.commit()
+                current_user.enc_password = generate_password_hash(new_pass)
+
+        return redirect(url_for('views.account'))
 
 
 @auth.route('/logout')

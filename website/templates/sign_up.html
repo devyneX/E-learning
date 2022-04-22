@@ -6,6 +6,18 @@
 <div class="signup">
     <div class="signup_form">
         <div class="signup_title">Sign Up</div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        {% if category == 'error' %}
+        <div class="alert">
+            <span class="alertclosebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{ message }}
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
         <form method="post" class="signup_content">
             <div class="login-signup-as">
                 <label for="type">Sign Up as</label> 

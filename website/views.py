@@ -24,7 +24,7 @@ def search():
 def browse_search(search_term):
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cur.execute(
-        """SELECT * FROM course WHERE course_title like %s""", (f'%{search_term}%', ))
+        """SELECT * FROM course WHERE course_title LIKE %s""", (f'%{search_term}%', ))
     ls = cur.fetchall()
     courses = []
     for course in ls:
@@ -47,6 +47,10 @@ def browse_categories(category):
     for course in ls:
         courses.append(Course(course['course_id'], course['course_title'],
                               course['category'], course['description'], course['teacher_id']))
+        cur.execute(
+            """SELECT firstname, lastname FROM teacher WHERE teacher_id = %s""", (course['teacher_id'], ))
+        result = cur.fetchone()
+        courses[-1].teacher = result['firstname'] + ' ' + result['lastname']
     return render_template('browse.html', user=current_user, title=category, courses=courses)
 
 
@@ -129,7 +133,15 @@ def teacher():
                 courses.append(Course(course['course_id'], course['course_title'],
                                       course['category'], course['description'], course['teacher_id']))
 
-            return render_template('teacher.html', user=current_user, teacher=teacher_obj, courses=courses, course_count=len(courses))
+            cur.close()
+            cur = mysql.connection.cursor()
+            cur.execute(
+                """SELECT AVG(star) FROM feedback f WHERE f.course_id in (SELECT course_id FROM course WHERE teacher_id = %s)""", (teacher_obj.teacher_id, ))
+            rating = cur.fetchone()[0]
+            rating = str(rating)[:3] if rating is not None else "Not rated yet"
+            cur.close()
+
+            return render_template('teacher.html', user=current_user, teacher=teacher_obj, rating=rating, courses=courses, course_count=len(courses))
 
         if request.method == 'POST':
             course_title = request.form.get('course_title')
@@ -479,6 +491,13 @@ def assessment(course_id, assessment_id):
             tid = cur.fetchone()['teacher_id']
             if tid == assessment.teacher_id:
                 creator_teacher = True
+
+        if current_user.account_type == 'student':
+            cur.execute("""SELECT student_id, assessment_id FROM attended_assessment a WHERE a.student_id  = (SELECT student_id FROM student WHERE account_id = %s) AND a.assessment_id = %s""",
+                        (current_user.account_id, assessment_id))
+            result = cur.fetchone()
+            if result is not None:
+                return redirect(url_for('views.result', course_id=course_id, assessment_id=assessment_id))
 
         cur.execute(
             """SELECT * FROM questions WHERE assessment_id = %s""", (assessment_id, ))

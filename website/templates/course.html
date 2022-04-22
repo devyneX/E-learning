@@ -1,6 +1,6 @@
 {% extends 'base.html'%}
 
-{% block title %}Course{% endblock%}
+{% block title %}{{ course.course_title }}{% endblock%}
 
 {% block content %}
 <div class="course_content">
@@ -11,17 +11,16 @@
         <div class="course_top_title">
             <h3>Category: {{ course.category }}</h3>
         </div>
-        <!-- TODO: please incorporate this into the design -->
-        <!-- <div class="course_top_title">
-            <h4> Rating: {{ rating }}</h4>
-            <h4>Rated by {{ rating_count }} students</h4>
-        </div> -->
 
     </section>
     <div class="course_description">
         <h3>Descriptioin:</h3>
         <span>{{ course.description }}</span><br>
+        {% if rating_count != 0 %}
         <span>Rating: {{ rating }} (by {{ rating_count }} students) </span>
+        {% else %}
+        <span>Rating: Not rated yet </span>
+        {% endif %}
     </div>
 
 
