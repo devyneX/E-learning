@@ -7,13 +7,16 @@
     <section class="home" id="home">
 
         <div class="body_content">
-            <h1>learn online form home</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum rerum accusantium dolore esse error
-                facere totam eveniet dicta molestiae ea?</p>
-            <a href="#"><button>discover more</button></a>
+            <h1>learn online from home</h1>
+            <p>
+                No need to go out to learn. <br>
+                No more paying for Education. <br>
+                Join us now and learn for free from the comfort of your home.
+            </p>
+            <a href="{{ url_for('auth.signup') }}"><button>Join Us</button></a>
         </div>
 
-        <div class="box-container">
+        <!-- <div class="box-container">
 
             <div class="box">
                 <i class="fas fa-graduation-cap"></i>
@@ -33,7 +36,7 @@
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, sit!</p>
             </div>
 
-        </div>
+        </div> -->
 
     </section>
 
@@ -43,24 +46,21 @@
 
 
     <section class="about" id="about">
-
         <h1 class="heading">About Us</h1>
-        <h3 class="title">start your journey with us</h3>
+        <h3 class="title">Join us on our jouney</h3>
 
         <div class="row">
-
-            <div class="body_content">
-                <h3>start your journey to a better life with our practical courses</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta repellendus incidunt dolorum
-                    voluptas saepe, animi perspiciatis praesentium ipsa numquam et possimus dolorem enim similique,
-                    quod dicta necessitatibus ducimus officiis nemo!</p>
-                <a href="#"><button>learn more</button></a>
-            </div>
-
             <div class="image">
-                <img src="about_image.svg" alt="">
+                <img src="{{ url_for('static', filename='home_pic.jpg') }}">
             </div>
-
+            <div class="body_content">
+                <h3>Learn and Teach From Anywhere For Free</h3>
+                <p>E-Learning is a platform where you can learn and teach from your home. 
+                    We offer you the platform to join as a teacher and make your own courses. We give you the opportunity to learn for free. 
+                    Thousands of courses made by qualified teachers at your door step. Don't waste a second and join us right now.
+                </p>
+                <a href="{{ url_for('auth.signup') }}"><button>Start Now</button></a>
+            </div>
         </div>
 
     </section>
@@ -122,7 +122,7 @@
 
     <!-- course section starts  -->
 
-    <section id="course" class="course">
+    <!-- <section id="course" class="course">
 
         <h1 class="heading">our courses</h1>
         <h3 class="title">upgrade your skills with newest courses</h3>

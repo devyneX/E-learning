@@ -173,12 +173,18 @@ def course(course_id):
 
         enrolled_student = False
         creator_teacher = False
+        rated = False
         if current_user.account_type == 'student':
             cur.execute("""SELECT * FROM enrollment e WHERE e.course_id = %s and e.student_id = (SELECT student_id FROM student WHERE account_id = %s)""",
                         (course_id, current_user.account_id))
             enrollment = cur.fetchone()
             if enrollment is not None:
                 enrolled_student = True
+            cur.execute(
+                """SELECT * FROM feedback f WHERE f.course_id = %s and f.student_id = (SELECT student_id FROM student WHERE account_id = %s)""", (course_id, current_user.account_id))
+            feedback = cur.fetchone()
+            if feedback is not None:
+                rated = True
         if current_user.account_type == 'teacher':
             cur.execute("""SELECT teacher_id FROM teacher WHERE account_id = %s""",
                         (current_user.account_id, ))
@@ -203,7 +209,7 @@ def course(course_id):
         for assessment in ls:
             assessments.append(Assessment(assessment['assessment_id'], assessment['assessment_title'],
                                           assessment['course_id'], assessment['teacher_id']))
-        return render_template('course.html', user=current_user, enrolled=enrolled_student, creator=creator_teacher, course=course, rating=rating, rating_count=rating_count, study_materials=contents, assessments=assessments)
+        return render_template('course.html', user=current_user, enrolled=enrolled_student, rated=rated, creator=creator_teacher, course=course, rating=str(rating)[:4], rating_count=rating_count, study_materials=contents, assessments=assessments)
 
 
 @views.route('/course/<course_id>/enroll')
@@ -348,13 +354,15 @@ def add_questions(course_id, assessment_id):
         return render_template('question_add.html', user=current_user, course=course, assessment=assessment, questions=questions)
 
     if request.method == 'POST':
-        print('here')
         text = request.form.get('text')
         option1 = request.form.get('option1')
         option2 = request.form.get('option2')
         option3 = request.form.get('option3')
         option4 = request.form.get('option4')
         correct = request.form.get('correct')
+        if correct not in ['1', '2', '3', '4']:
+            # flash
+            pass
         print(text, option1, option2, option3, option4, correct)
         cur = mysql.connection.cursor()
         cur.execute("""INSERT INTO questions (assessment_id, text, option1, option2, option3, option4, correct) VALUES (%s, %s, %s, %s, %s, %s, %s)""",
@@ -412,7 +420,7 @@ def content(course_id, content_id):
                     Comment(cid, text, username, 'Teacher', post_time))
             elif tid is None:
                 cur.execute(
-                    """SELECT username FROM authorization a WHERE a.account_id = (SELECT account_id FROM student WHERE studnet_id = %s)""", (sid, ))
+                    """SELECT username FROM authorization a WHERE a.account_id = (SELECT account_id FROM student WHERE student_id = %s)""", (sid, ))
                 username = cur.fetchone()[0]
                 comments.append(
                     Comment(cid, text, username, 'Student', post_time))

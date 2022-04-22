@@ -1,6 +1,6 @@
 {% extends 'base.html'%}
 
-{% block title %} {% endblock%}
+{% block title %}{{ student.firstname }} {{ student.lastname }}{% endblock%}
 
 {% block content %}
 <div class="profile_container">
@@ -18,10 +18,22 @@
     <div class="right_side_card_container">
         <div class="profile_heading">Enrolled Courses</div>
         {% for course in courses %}
-        <div class="right_side_card">
-            <h1><a href="{{ url_for('views.course', course_id=course.course_id) }}">{{ course.course_title }}</a>
+        <div class="browse_course" id="courseBox{{ loop.index }}">
+            <div class="browse_course-preview">
+                <h6>Course</h6>
+                <h2>{{ course.course_title }}</h2>
+            </div>
+            <div class="browse_course-info">
+                <h6>Instructor: {{ course.teacher }}</h6>
+                <h2>Category: {{ course.category }}</h2>
+                <button class="browse_btn" id="view-course-button{{ course.course_id }}">View Course</button>
+                <script>
+                    document.getElementById('view-course-button{{ course.course_id }}').onclick = function () {
+                        location.href = "{{ url_for('views.course', course_id=course.course_id) }}"
+                    }
+                </script>
+            </div>
         </div>
-        </h1>
 
         {% endfor %}
     </div>

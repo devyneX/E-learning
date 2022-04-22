@@ -14,7 +14,6 @@
   font-family: 'Poppins', sans-serif;
 }
 .page_content { 
-  /* background-color: whitesmoke; */
   background: linear-gradient(to right, #8e9eab, #eef2f3);
   padding-top: 70px;
   min-height: 61vh; 
@@ -284,7 +283,7 @@ nav .content .links{
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  z-index: 0;
+  /* z-index: 0; */
   overflow:hidden;
   position: relative;
 }
@@ -402,7 +401,9 @@ nav .content .links{
 }
 
 .about .row .body_content{
-  padding-left: 5rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  /* padding: 5rem auto; */
 }
 
 .about .row .body_content h3{
@@ -564,6 +565,14 @@ nav .content .links{
   -13px -13px 20px #fff;
 
 }
+.login-signup-as{
+  /* padding: 5px auto; */
+  margin: 10px auto;
+}
+
+.form-popup{
+  box-shadow: none;
+}
 
 .login_logo{
   background: url("images.png");
@@ -643,21 +652,24 @@ nav .content .links{
   width: 92%;
   overflow: hidden;
   font-family: "serif";
-  font-weight: 700;
+  /* font-weight: 700; */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   color: #555;
+  /* color: rgb(28, 35, 50); */
   background-color: rgb(3, 78, 90);
+  /* background-color: rgb(42, 104, 113); */
 }
 .course_top_title{
   margin: 15px auto;
   font-size: 50px;
   font-family: "serif" !important;
   font-weight: bold;
-  color: #7c795d;
-  letter-spacing: 5px;
+  /* color: #7c795d; */
+  color: rgb(218, 227, 228);
+  /* letter-spacing: 5px; */
 }
 /* .course_content{
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
@@ -686,7 +698,8 @@ nav .content .links{
   /* padding: 25px; */
   align-items: center;
   margin: auto;
-  padding-bottom: 5rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .display_container{
@@ -992,12 +1005,13 @@ form .feedback_btn button:hover{
 .early_comment_wrapper{
   display: flex;
   flex-direction: column;
-  margin: 5px auto;
+  flex-wrap: wrap;
+  margin: 10px auto;
   /* align-items: center; */
   /* margin-left: 50px;
   margin-bottom: 5px;
   margin-right: 225px; */
-  border-bottom: #000000 solid 2px;
+  /* border-bottom: #000000 solid 2px; */
   /* border-top: #000000 solid 2px; */
   background-color: aliceblue;
   border-radius: 5px;
@@ -1006,9 +1020,24 @@ form .feedback_btn button:hover{
   -moz-box-shadow: 9px 8px 21px -6px rgba(0,0,0,0.75);
 }
 
-/* .early_comments{
-  margin-left: 10px;
-} */
+.early_comments{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: large;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.early_comments h2{
+  color: #186b71;
+}
+
+.early_comments p{
+  margin-left: 25px;
+  word-break: break-all;
+}
+
 .comment_button {
   /* margin-left: 50px; */
   margin-top: 25px;
@@ -1038,7 +1067,7 @@ form .feedback_btn button:hover{
   text-decoration: none;
 }
 .content_titles{
-  font-size: 25px;
+  font-size: 30px;
   padding-bottom: 25px;
   /* margin-left: 100vh; */
 }
@@ -1205,6 +1234,7 @@ form .feedback_btn button:hover{
 	font-size: 16px;
 	padding: 12px 25px;
 	position: absolute;
+  cursor: pointer;
 	bottom: 30px;
 	right: 30px;
 	letter-spacing: 1px;
@@ -1547,11 +1577,12 @@ form .account_user-details .account_input-box{
 .assessment_btn,
 .assessment_submitBtn#submit{
 /* margin-left: 67vh; */
-margin: 0 auto;
+margin: 5px auto;
 }
 .assessment_btn,
 .assessment_submitBtn{
 	padding: 14px 30px;
+  margin: 10px auto;
 	background-color: #434179;
 	color: #fff;
 	border: 0;

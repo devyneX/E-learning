@@ -22,22 +22,17 @@
     <div class="early_comment_wrapper">
         <div class="early_comments">
             <h2>{{ comment.posted_by }} ({{ comment.posted_account }})</h2> 
-            <div class="time">{{ comment.post_time}}</div>
-            <br>
+            <div class="time">{{ comment.post_time }}</div>
+            <!-- <br> -->
             <p>{{ comment.text }}</p>
         </div>
     </div>
     {% endfor %}
     <form method="POST">
         <div class="content_textarea_wrapper">
-    
-            <input type="text" name="comment" placeholder="Please comment here">
+            <input type="text" name="comment" placeholder="Please comment here" autocomplete="off" required>
+            <button type="submit" class="comment_button">Comment</button>
         </div>
-        <button type="submit" class="comment_button">Comment</button>
     </form>
-
 </div>
-
-
-
 {% endblock%}

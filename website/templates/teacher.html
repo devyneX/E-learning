@@ -23,11 +23,11 @@
             <form class="" method="POST">
                 <h1>Create Course</h1>
         
-                <label for="title"><b>Course Title</b></label>
+                <label for="title"></label>
                 <input type="text" class="course_title" placeholder="Course Title" name="course_title" required><br>
         
-                <label for="category"><b>Category</b></label>
-                <input list="categories" class="course_title" placeholder="Category" name="category" required><br>
+                <label for="category"></label>
+                <input list="categories" class="course_title" placeholder="Category" name="category" autocomplete="off" required><br>
                 <datalist id="categories">
                     <option value="Category1"></option>
                     <option value="Category2"></option>
@@ -35,7 +35,7 @@
                     <option value="Category4"></option>
                 </datalist>
         
-                <label for="description"><b>Descriptioin</b></label>
+                <label for="description"></label>
                 <input type="text" class="course_title" placeholder="Description" name="description" required><br>
         
                 <button type="submit" class="course_submit">Add</button>
@@ -44,17 +44,22 @@
         </div>
         <div class="profile_heading">Created Courses</div>
         {% for course in courses %}
-        <div class="right_side_card" id="courseBox{{ loop.index }}">
-            <h1>{{ course.course_title }}</h1>
-            <p>{{ course.category }}</p>
+        <div class="browse_course" id="courseBox{{ loop.index }}">
+            <div class="browse_course-preview">
+                <h6>Course</h6>
+                <h2>{{ course.course_title }}</h2>
+            </div>
+            <div class="browse_course-info">
+                <h6>Instructor: {{ course.teacher }}</h6>
+                <h2>Category: {{ course.category }}</h2>
+                <button class="browse_btn" id="view-course-button{{ course.course_id }}">View Course</button>
+                <script>
+                    document.getElementById('view-course-button{{ course.course_id }}').onclick = function () {
+                        location.href = "{{ url_for('views.course', course_id=course.course_id) }}"
+                    }
+                </script>
+            </div>  
         </div>
-        <script>
-            document.getElementById('courseBox{{ loop.index }}').onclick = function () {
-                    location.href = "{{ url_for('views.course', course_id=course.course_id) }}"
-            }
-        </script>
-        <!-- <a href="/course/{{ course.course_id }}">{{ course.course_title }}</a> -->
-
         {% endfor %}
     </div>
 </div>

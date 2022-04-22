@@ -17,7 +17,12 @@
             <div class="browse_course-info">
                 <h6>Instructor: {{ course.teacher }}</h6>
                 <h2>Category: {{ course.category }}</h2>
-                <button class="browse_btn"><a href="/home">Continue</a></button>
+                <button class="browse_btn" id="view-course-button{{ course.course_id }}">View Course</button>
+                <script>
+                    document.getElementById('view-course-button{{ course.course_id }}').onclick = function() {
+                        location.href = "{{ url_for('views.course', course_id=course.course_id) }}"
+                    }
+                </script>
             </div>
         </div>
     </div>

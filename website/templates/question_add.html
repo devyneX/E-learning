@@ -38,17 +38,32 @@
         <div class="question_add_account_title">Add Questions</div>
         <div class="account_content">
             <form method="POST">
-                <div class="account_input-box"><input type="text" name="text" placeholder="Question"></div>
-                <div class="account_input-box"><input type="text" name="option1" placeholder="option 1"></div>
-                <div class="account_input-box"><input type="text" name="option2" placeholder="option 2"></div>
-                <div class="account_input-box"><input type="text" name="option3" placeholder="option 3"></div>
-                <div class="account_input-box"><input type="text" name="option4" placeholder="option 4"></div>
-                <div class="account_input-box"><input type="text" name="correct" placeholder="Correct Answer"></div>
+                <div class="account_input-box"><input type="text" name="text" placeholder="Question" autocomplete="off" required></div>
+                <div class="account_input-box"><input type="text" name="option1" placeholder="option 1" autocomplete="off" required></div>
+                <div class="account_input-box"><input type="text" name="option2" placeholder="option 2" autocomplete="off" required></div>
+                <div class="account_input-box"><input type="text" name="option3" placeholder="option 3" autocomplete="off" required></div>
+                <div class="account_input-box"><input type="text" name="option4" placeholder="option 4" autocomplete="off" required></div>
+                <div class="account_input-box">
+                    <input type="text" list="options" name="correct" placeholder="Correct Answer" autocomplete="off">
+                    <datalist id="options">
+                        <option value="1">Option1</option>
+                        <option value="2">Option2</option>
+                        <option value="3">Option3</option>
+                        <option value="4">Option4</option>
+
+                    </datalist>
+                </div>
                 <div class="assessment_footer-button"><button class="assessment_submitBtn" type="submit">add</button>
                 </div>
             </form>
-            <div class="assessment_footer-button"><button class="assessment_submitBtn"><a
-                        href="/course/{{ assessment.course_id }}">Finish</a></button></div>
+            <div class="assessment_footer-button">
+                <button class="assessment_submitBtn" id="assessment_submit_redirect"> Finish </button>
+                <script>
+                    document.getElementById('assessment_submit_redirect').onclick = function() {
+                        location.href = "{{ url_for('views.course', course_id=course.course_id) }}"
+                    }
+                </script>
+            </div>
         </div>
     </div>
 </div>

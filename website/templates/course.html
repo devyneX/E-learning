@@ -6,10 +6,10 @@
 <div class="course_content">
     <section class="course_top">
         <div class="course_top_title">
-            Course Title: {{ course.course_title}}
+            <h1>{{ course.course_title}}</h1>
         </div>
         <div class="course_top_title">
-            Category: {{ course.category }}
+            <h3>Category: {{ course.category }}</h3>
         </div>
         <!-- TODO: please incorporate this into the design -->
         <!-- <div class="course_top_title">
@@ -20,10 +20,8 @@
     </section>
     <div class="course_description">
         <h3>Descriptioin:</h3>
-        <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora ipsa neque rerum quis
-            nulla. Necessitatibus, quo non consequatur enim magni voluptatem ad, dolorem iste autem, corporis a amet
-            ipsa
-            officiis.{{ course.description }}</span>
+        <span>{{ course.description }}</span><br>
+        <span>Rating: {{ rating }} (by {{ rating_count }} students) </span>
     </div>
 
 
@@ -40,7 +38,7 @@
     </div>
     {% endif %}
 
-    {% if user.account_type == 'student' and enrolled %}
+    {% if user.account_type == 'student' and enrolled and not rated %}
     <div class="course_button_container">
         <button class="open-button" type="button" id="feedback_button">Feedback</button>
         <script>
@@ -61,10 +59,10 @@
             <form action="{{ url_for('views.add_content', course_id=course.course_id) }}" method="POST">
                 <h1>Add Content</h1>
                 <label for="content_title"></label>
-                <input type="text" class="course_title" placeholder="Content Title" name="content_title" required><br>
+                <input type="text" class="course_title" placeholder="Content Title" name="content_title" autocomplete="off" required><br>
     
                 <label for="link"></label>
-                <input type="url" class="course_url" placeholder="Link" name="link" required><br>
+                <input type="url" class="course_url" placeholder="Link" name="link" autocomplete="off" required><br>
     
                 <button type="submit" class="course_submit">Add</button>
                 <button type="button" class="course_close" onclick="closeForm('addContent')">Close</button>
@@ -82,7 +80,7 @@
                 <h2>Add Assessment</h2>
                 <label for="assessment_title"></label>
                 <input type="text" class="course_title" id="assessment_title_input" name="assessment_title"
-                    placeholder="Assessment Title" required>
+                    placeholder="Assessment Title" autocomplete="off" required>
                 <button class="course_submit" type="submit" id="add_assessment_submit">Add</button>
                 <button type="button" class="course_close" onclick="closeForm('addAssessment')">Close</button>
             </form>
