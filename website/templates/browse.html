@@ -3,14 +3,11 @@
 {% block title %}{{ title }}{% endblock%}
 
 {% block content %}
-
-    <h1 style="font-size: 50px; background-image: linear-gradient(45deg, #7175da, #9790F2); font-family:monospace;">
+<div class="browse_body">
+    <h1 style="font-size: 50px; font-family:monospace;">
         Search Results
     </h1>
-
-
 {% for course in courses %}
-<div class="browse_body">
     <div class="browse_courses-container">
         <div class="browse_course">
             <div class="browse_course-preview">
@@ -24,7 +21,7 @@
             </div>
         </div>
     </div>
-</div>
 {% endfor %}
+</div>
 
 {% endblock%}

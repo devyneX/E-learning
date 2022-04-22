@@ -1112,15 +1112,15 @@ form .feedback_btn button:hover{
 	font-family: 'Muli', sans-serif;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	/* justify-content: center; */
 	flex-direction: column;
 	min-height: 100vh;
 	margin: 0;
 }
 
 .browse_courses-container{
+  margin: 5px auto;
   align-self: baseline;
-  margin-bottom: 100vh;
 
 }
 
