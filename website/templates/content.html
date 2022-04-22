@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="content_container">
-    <div class="content_titles">
+    <div class="content_titles" style="border-bottom: 2px solid;">
         <h1>{{ study_material.content_title }}</h1>
     </div>
 </div>
@@ -17,7 +17,9 @@
     </video> -->
     <iframe src="{{ study_material.link }}" frameborder="10" width="80%" height="600px"></iframe>
 </center>
-<div class="content_titles"><h2>Comments</h2></div>
+<div class="content_titles">
+    <h2>Comments</h2>
+</div>
 {% for comment in comments %}
 
 

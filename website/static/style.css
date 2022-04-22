@@ -919,6 +919,10 @@ form .feedback_btn button:hover{
 
 /* content comments */
 
+.content_container .content_titles h1{
+  border-bottom: 5px solid #a252d1;
+}
+
 .content_textarea_wrapper{
   display: flex;
   flex-direction: column;
@@ -1005,7 +1009,8 @@ form .feedback_btn button:hover{
 }
 .content_titles{
   font-size: 25px;
-  margin-left: 100vh;
+  position: relative;
+  padding: 10px 10px 10px 10px;
 }
 .time{
   margin-bottom: 5px;
