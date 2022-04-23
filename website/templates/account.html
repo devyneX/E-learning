@@ -7,6 +7,18 @@
     <div class="account_container">
         <div class="account_title">Account Settings</div>
         <div class="account_content">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            {% if category == 'error' %}
+            <div class="alert">
+                <span class="alertclosebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                {{ message }}
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
             <form action="{{ url_for('auth.update_account') }}" method="POST">
                 <div class="account_user-details">
                     <div class="account_input-box">
@@ -19,11 +31,11 @@
                     </div>
                     <div class="account_input-box">
                         <span class="account_details">Username</span>
-                        <input type="text" name="username" placeholder="Username" value="{{ user.username }}" required>
+                        <input type="text" name="username" placeholder="Username" value="{{ user.username }}" disabled>
                     </div>
                     <div class="account_input-box">
                         <span class="account_details">Email</span>
-                        <input type="text" name="email" placeholder="Email" value="{{ user.email }}" required>
+                        <input type="text" name="email" placeholder="Email" value="{{ user.email }}" disabled>
                     </div>
                     <div class="account_input-box">
                         <span class="account_details">Old Password</span>
@@ -31,11 +43,11 @@
                     </div>
                     <div class="account_input-box">
                         <span class="account_details">New Password</span>
-                        <input type="password" name="new_password" placeholder="New Password">
+                        <input type="password" name="new_password" placeholder="New Password" required>
                     </div>
                     <div class="account_input-box">
                         <span class="account_details">Confirm Password</span>
-                        <input type="password" name="confirm_password" placeholder="Confirm New password">
+                        <input type="password" name="confirm_password" placeholder="Confirm New password" required>
                     </div>
                 </div>
 

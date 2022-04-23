@@ -16,7 +16,8 @@
             </div>
             <div class="browse_course-info">
                 <h6>Instructor: {{ course.teacher }}</h6>
-                <h2>Category: {{ course.category }}</h2>
+                <h2>Category:</h2> 
+                <h2>{{ course.category }}</h2>
                 <button class="browse_btn" id="view-course-button{{ course.course_id }}">View Course</button>
                 <script>
                     document.getElementById('view-course-button{{ course.course_id }}').onclick = function() {

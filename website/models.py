@@ -75,8 +75,3 @@ class Comment:
         self.posted_by = posted_by
         self.posted_account = posted_account
         self.post_time = post_time
-
-
-class Feedback:
-    def __init__(self):
-        pass

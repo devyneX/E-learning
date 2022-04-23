@@ -9,7 +9,7 @@
             <img src="{{ url_for('static', filename='student_dp.jpg') }}" />
         </div>
         <div class="information">
-            <h1>{{ student.firstname}} {{ student.lastname }}</h1>
+            <h1>{{ student.firstname }} {{ student.lastname }}</h1>
             <h3>Enrolled in {{ course_count }} Course</h3>
             <h3>Attended {{ assessment_count }} Assessments</h3>
             <h3>Joined on {{ student.join_date }}</h3>
@@ -25,7 +25,8 @@
             </div>
             <div class="browse_course-info">
                 <h6>Instructor: {{ course.teacher }}</h6>
-                <h2>Category: {{ course.category }}</h2>
+                <h2>Category:</h2>
+                <h2>{{ course.category }}</h2>
                 <button class="browse_btn" id="view-course-button{{ course.course_id }}">View Course</button>
                 <script>
                     document.getElementById('view-course-button{{ course.course_id }}').onclick = function () {

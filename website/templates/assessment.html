@@ -40,7 +40,11 @@
 
         {% endfor %}
         <div class="assessment_footer-button">
+            {% if user.account_type == 'teacher' %}
+            <button type="submit" id="submit" class="assessment_submitBtn" disabled>Submit</button>
+            {% else %}
             <button type="submit" id="submit" class="assessment_submitBtn">Submit</button>
+            {% endif %}
         </div>
     </div>
 

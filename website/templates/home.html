@@ -13,37 +13,14 @@
                 No more paying for Education. <br>
                 Join us now and learn for free from the comfort of your home.
             </p>
-            <a href="{{ url_for('auth.signup') }}"><button>Join Us</button></a>
+            <button id="join_us">Join Us</button>
+            <script>
+                document.getElementById("join_us").onclick = function () {
+                    location.href = "{{ url_for('auth.signup') }}"
+                }
+            </script>
         </div>
-
-        <!-- <div class="box-container">
-
-            <div class="box">
-                <i class="fas fa-graduation-cap"></i>
-                <h3>trending courses</h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, sit!</p>
-            </div>
-
-            <div class="box">
-                <i class="fas fa-fire"></i>
-                <h3>free trial</h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, sit!</p>
-            </div>
-
-            <div class="box">
-                <i class="fas fa-award"></i>
-                <h3>certifications</h3>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero, sit!</p>
-            </div>
-
-        </div> -->
-
     </section>
-
-    <!-- home section ends -->
-
-    <!-- about section starts  -->
-
 
     <section class="about" id="about">
         <h1 class="heading">About Us</h1>
@@ -59,7 +36,12 @@
                     We offer you the platform to join as a teacher and make your own courses. We give you the opportunity to learn for free. 
                     Thousands of courses made by qualified teachers at your door step. Don't waste a second and join us right now.
                 </p>
-                <a href="{{ url_for('auth.signup') }}"><button>Start Now</button></a>
+                <button id="start_now">Start Now</button>
+                <script>
+                    document.getElementById("start_now").onclick = function() {
+                        location.href = "{{ url_for('auth.signup') }}"
+                    }
+                </script>
             </div>
         </div>
 

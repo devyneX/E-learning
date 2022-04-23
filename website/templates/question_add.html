@@ -37,6 +37,18 @@
     <div class="question_add_account_container">
         <div class="question_add_account_title">Add Questions</div>
         <div class="account_content">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            {% if category == 'error' %}
+            <div class="alert">
+                <span class="alertclosebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                {{ message }}
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
             <form method="POST">
                 <div class="account_input-box"><input type="text" name="text" placeholder="Question" autocomplete="off" required></div>
                 <div class="account_input-box"><input type="text" name="option1" placeholder="option 1" autocomplete="off" required></div>

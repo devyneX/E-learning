@@ -23,7 +23,7 @@ def login():
         cur.execute(
             """SELECT * FROM authorization WHERE username = %s AND account_type = %s""", (username, acc_type))
         result = cur.fetchone()
-        print(result)
+        # print(result)
         cur.close()
         # if the user exists
         if result is not None:
@@ -79,9 +79,9 @@ def signup():
             flash('Input a valid first name and last name', 'error')
             return render_template('sign_up.html', user=current_user)
         # checking length of the password
-        elif len(password1) < 2:
+        elif len(password1) < 8:
             # flash
-            flash('Password too small', 'error')
+            flash('Password too small. Minimum Length is 8.', 'error')
             return render_template('sign_up.html', user=current_user)
         # checking if the two passwords match
         elif password1 != password2:
@@ -115,7 +115,7 @@ def signup():
 
     if request.method == 'GET':
         if current_user.is_authenticated:
-            return redirect('views.profile')
+            return redirect(url_for('views.profile'))
         else:
             return render_template('sign_up.html', user=current_user)
 
@@ -123,32 +123,27 @@ def signup():
 @auth.route('/update_account', methods=['POST'])
 @login_required
 def update_account():
-    username = request.form.get('username')
-    email = request.form.get('email')
     old_pass = request.form.get('old_password')
     new_pass = request.form.get('new_password')
     confirm_pass = request.form.get('confirm_password')
+    # print(type(new_pass))
 
     if check_password_hash(current_user.enc_password, old_pass):
         cur = mysql.connection.cursor()
-        if username != current_user.username:
-            cur.execute("""UPDATE authorization SET username = %s WHERE account_id = %s""",
-                        (username, current_user.account_id))
+        if new_pass == confirm_pass:
+            if len(new_pass) < 8:
+                flash('Password is too small. Minimum Length is 8.', 'error')
+                return redirect(url_for('views.account'))
+            cur.execute("""UPDATE authorization SET encrypted_password = %s WHERE account_id = %s""",
+                        (generate_password_hash(new_pass), current_user.account_id))
             mysql.connection.commit()
-            current_user.username = username
-        if email != current_user.username:
-            cur.execute("""UPDATE authorization SET email = %s WHERE account_id = %s""",
-                        (email, current_user.account_id))
-            mysql.connection.commit()
-            current_user.email = email
+            current_user.enc_password = generate_password_hash(new_pass)
+        else:
+            flash("Passwords don't match", 'error')
 
-        if new_pass is not None:
-            if new_pass == confirm_pass:
-                cur.execute("""UPDATE authorization SET encrypted_password = %s WHERE account_id = %s""",
-                            (generate_password_hash(new_pass), current_user.account_id))
-                mysql.connection.commit()
-                current_user.enc_password = generate_password_hash(new_pass)
-
+        return redirect(url_for('views.account'))
+    else:
+        flash('Incorrect Password', 'error')
         return redirect(url_for('views.account'))
 
 

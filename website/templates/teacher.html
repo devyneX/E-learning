@@ -29,10 +29,10 @@
                 <label for="category"></label>
                 <input list="categories" class="course_title" placeholder="Category" name="category" autocomplete="off" required><br>
                 <datalist id="categories">
-                    <option value="Category1"></option>
-                    <option value="Category2"></option>
-                    <option value="Category3"></option>
-                    <option value="Category4"></option>
+                    <option value="Web Development"></option>
+                    <option value="Software Development"></option>
+                    <option value="Machine Learning"></option>
+                    <option value="Deep Learning"></option>
                 </datalist>
         
                 <label for="description"></label>
@@ -51,7 +51,8 @@
             </div>
             <div class="browse_course-info">
                 <h6>Instructor: {{ course.teacher }}</h6>
-                <h2>Category: {{ course.category }}</h2>
+                <h2>Category:</h2>
+                <h2>{{ course.category }}</h2>
                 <button class="browse_btn" id="view-course-button{{ course.course_id }}">View Course</button>
                 <script>
                     document.getElementById('view-course-button{{ course.course_id }}').onclick = function () {
